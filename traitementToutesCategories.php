@@ -22,11 +22,8 @@ if ($db_found) {
 				$sql2 = "SELECT Nom FROM vendeur WHERE IdVendeur=$IdVendeur";
 				$result2 = mysqli_query($db_handle, $sql2);
 				$data2 = mysqli_fetch_assoc($result2);
-<<<<<<< HEAD
 				$cheminPhoto = $data['Photo'];
 				echo "<img src ='$cheminPhoto'>";
-=======
->>>>>>> 83433483c26d156b5a03a763c54afbb063f26b19
 				echo "Nom:" . $data2['Nom'] . '<br>';
 				echo "Description: " . $data['Description'] . '<br>';
 				echo "Categorie: " . $data['Categorie'] . '<br>';
