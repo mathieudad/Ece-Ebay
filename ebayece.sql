@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 14 avr. 2020 à 14:32
+-- Généré le :  mar. 14 avr. 2020 à 14:52
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -201,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `vente` (
   `Photo` varchar(500) DEFAULT NULL,
   `Video` varchar(500) DEFAULT NULL,
   `Description` varchar(535) NOT NULL,
-  `Categorie` enum('Ferraille ou Trésor','Bon pour le Musée','Accessoire VIP') NOT NULL,
+  `Categorie` enum('Ferraille ou Tresor','Bon pour le Musee','Accessoire VIP') NOT NULL,
   `PrixDepart` int(5) NOT NULL,
   `PrixAchatImmediat` int(6) NOT NULL,
   `TypeVente` enum('Négociation','Enchère') NOT NULL,
@@ -216,9 +216,9 @@ CREATE TABLE IF NOT EXISTS `vente` (
 
 INSERT INTO `vente` (`IdVente`, `IdVendeur`, `Nom`, `Photo`, `Video`, `Description`, `Categorie`, `PrixDepart`, `PrixAchatImmediat`, `TypeVente`, `DateAjout`) VALUES
 (1, 1, 'Montre Bulova', 'PhotoItem/Montre.png', NULL, 'Une super montre jamais portée!', 'Accessoire VIP', 500, 2000, 'Enchère', '2020-04-10'),
-(2, 2, 'Bureau en Bois', 'PhotoItem/Bureau.png', NULL, 'Un super bureau sur lequel on peut travailler', 'Ferraille ou Trésor', 50, 400, 'Négociation', '2020-04-13'),
-(3, 1, 'Statue Bronze', 'PhotoItem/Statue.png', NULL, 'Une statue de collection a placer dans un Musée', 'Bon pour le Musée', 1000, 10000, 'Enchère', '2020-04-11'),
-(4, 2, 'Piece d\'époque', 'PhotoItem/Piece.png', NULL, 'Une piece datant de 1844', 'Ferraille ou Trésor', 2, 20, 'Enchère', '2020-04-12');
+(2, 2, 'Bureau en Bois', 'PhotoItem/Bureau.png', NULL, 'Un super bureau sur lequel on peut travailler', 'Ferraille ou Tresor', 50, 400, 'Négociation', '2020-04-13'),
+(3, 1, 'Statue Bronze', 'PhotoItem/Statue.png', NULL, 'Une statue de collection a placer dans un Musée', 'Bon pour le Musee', 1000, 10000, 'Enchère', '2020-04-11'),
+(4, 2, 'Piece d\'époque', 'PhotoItem/Piece.png', NULL, 'Une piece datant de 1844', 'Ferraille ou Tresor', 2, 20, 'Enchère', '2020-04-12');
 
 --
 -- Contraintes pour les tables déchargées
