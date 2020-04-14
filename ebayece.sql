@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 14 avr. 2020 à 10:08
+-- Généré le :  mar. 14 avr. 2020 à 12:42
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -35,7 +35,17 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `Pseudo` varchar(30) NOT NULL,
   `MotDePasse` varchar(30) NOT NULL,
   PRIMARY KEY (`IdAdmin`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `admin`
+--
+
+INSERT INTO `admin` (`IdAdmin`, `E-mail`, `Pseudo`, `MotDePasse`) VALUES
+(1, 'mathieu.dadoun@edu.ece.fr', 'Mat', 'mathieu'),
+(2, 'nikola.todorovic200@gmail.com', 'Niko', 'nikola'),
+(3, 'nikola.todorovic200@gmail.com', 'Niko', 'nikola'),
+(4, 'jordan.kujundzic@edu.ece.com', 'Jord', 'jordan');
 
 -- --------------------------------------------------------
 
@@ -72,15 +82,24 @@ CREATE TABLE IF NOT EXISTS `client` (
   `Ville` varchar(30) NOT NULL,
   `Pays` varchar(30) NOT NULL,
   `Telephone` varchar(10) NOT NULL,
-  `Panier` varchar(30) NOT NULL,
-  `TypeCarte` varchar(20) NOT NULL,
+  `Panier` varchar(30) DEFAULT NULL,
+  `TypeCarte` enum('Visa','MasterCard','American Express','PayPal') NOT NULL,
   `NumCarte` varchar(16) NOT NULL,
   `NomCarte` varchar(20) NOT NULL,
   `DateExpCarte` varchar(7) NOT NULL,
   `CodeCarte` int(4) NOT NULL,
   `PorteMonnaie` int(6) NOT NULL,
   PRIMARY KEY (`IdClient`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `client`
+--
+
+INSERT INTO `client` (`IdClient`, `Nom`, `Prenom`, `E-mail`, `Pseudo`, `MotDePasse`, `Adresse`, `CodePostal`, `Ville`, `Pays`, `Telephone`, `Panier`, `TypeCarte`, `NumCarte`, `NomCarte`, `DateExpCarte`, `CodeCarte`, `PorteMonnaie`) VALUES
+(1, 'Simpson', 'Bart', 'bartsimpson@edu.ece.fr', 'bart', 'bart', '123 route de bart', 13009, 'Springfield', 'USA', '0625032528', NULL, 'Visa', '1234123412341234', 'Bart Simpson', '12/2020', 1234, 0),
+(2, 'Simpson', 'Lisa', 'lisasimpson@edu.ece.fr', 'lisa', 'lisa', '123 route de bart', 13009, 'Springfield', 'USA', '0625032529', NULL, 'Visa', '3456345634563456', 'Lisa Simpson', '08/2020', 1414, 0),
+(3, 'Simpson', 'Maggie', 'maggiesimpson@edu.ece.fr', 'mag', 'maggie', '123 route de bart', 13009, 'Springfield', 'USA', '0625032529', NULL, 'MasterCard', '1234567812345678', 'Maggie Simpson', '12/2022', 2341, 10000);
 
 -- --------------------------------------------------------
 
@@ -148,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `negociation` (
 DROP TABLE IF EXISTS `vendeur`;
 CREATE TABLE IF NOT EXISTS `vendeur` (
   `IdVendeur` int(11) NOT NULL AUTO_INCREMENT,
-  `E-mail` varchar(255) NOT NULL,
+  `E-mail` varchar(80) NOT NULL,
   `Pseudo` varchar(30) NOT NULL,
   `MotDePasse` varchar(30) NOT NULL,
   `Photo` varchar(535) NOT NULL,
@@ -158,7 +177,15 @@ CREATE TABLE IF NOT EXISTS `vendeur` (
   `Telephone` varchar(10) NOT NULL,
   `PorteMonnaie` int(6) NOT NULL,
   PRIMARY KEY (`IdVendeur`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `vendeur`
+--
+
+INSERT INTO `vendeur` (`IdVendeur`, `E-mail`, `Pseudo`, `MotDePasse`, `Photo`, `ImageFond`, `Nom`, `Pays`, `Telephone`, `PorteMonnaie`) VALUES
+(1, 'homersimpson@edu.ece.fr', 'hom', 'homer', 'PhotoProfil/homer.png', 'PhotoProfil/homer.png', 'Simpson', 'USA', '0625032525', 0),
+(2, 'margesimpson@edu.ece.fr', 'mar', 'marge', 'PhotoProfil/marge.png', 'PhotoProfil/marge.png', 'Simpson', 'USA', '0625032526', 0);
 
 -- --------------------------------------------------------
 
@@ -181,7 +208,17 @@ CREATE TABLE IF NOT EXISTS `vente` (
   `DateAjout` date NOT NULL,
   PRIMARY KEY (`IdVente`),
   KEY `c1` (`IdVendeur`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `vente`
+--
+
+INSERT INTO `vente` (`IdVente`, `IdVendeur`, `Nom`, `Photo`, `Video`, `Description`, `Categorie`, `PrixDepart`, `PrixAchatImmediat`, `TypeVente`, `DateAjout`) VALUES
+(1, 1, 'Montre Bulova', 'PhotoItem/montre.png', NULL, 'Une super montre jamais portée!', 'Accessoire VIP', 500, 2000, 'Enchère', '2020-04-10'),
+(2, 2, 'Bureau en Bois', 'PhotoItem/bureau.png', NULL, 'Un super bureau sur lequel on peut travailler', 'Ferraille ou Trésor', 50, 400, 'Négociation', '2020-04-13'),
+(3, 1, 'Statue Bronze', 'PhotoItem/Statue.png', NULL, 'Une statue de collection a placer dans un Musée', 'Bon pour le Musée', 1000, 10000, 'Enchère', '2020-04-11'),
+(4, 2, 'Piece d\'époque', 'PhotoItem/Piece.png', NULL, 'Une piece datant de 1844', 'Ferraille ou Trésor', 2, 20, 'Enchère', '2020-04-12');
 
 --
 -- Contraintes pour les tables déchargées
