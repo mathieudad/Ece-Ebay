@@ -1,10 +1,5 @@
 <?php
 
-$type = "Client";
-$id = 2;
-
-
-
 function affichageMonCompte($type, $id){
 
 	//identifier votre BDD
@@ -70,7 +65,5 @@ function afficheClient($data){
 	// tu peux ici afficher le numero de carte le code et la date d'expiration
 	echo "Porte monnaie :". $data['PorteMonnaie']."<br>";
 }
-
-affichageMonCompte($type,$id);
 
 ?>
