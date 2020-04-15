@@ -26,7 +26,6 @@ function affichageCategorie($mode){
 			$sqlVente = "SELECT * FROM Vente WHERE Categorie = 'Ferraille ou Tresor';";
 			$resultVente = mysqli_query($db_handle, $sqlVente);
 			if (mysqli_num_rows($resultVente) == 0) { 
-				//le livre recherché n'existe pas 
 				echo "Aucune Vente pour cette categorie"; 
 			}else { 
 				while($data = mysqli_fetch_assoc($resultVente)){
