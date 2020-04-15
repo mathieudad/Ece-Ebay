@@ -23,7 +23,7 @@ function affichageVendre($type, $id){
 				$sql2 = "SELECT Nom FROM vendeur WHERE IdVendeur=$id;";
 				$result2 = mysqli_query($db_handle, $sql2);
 				$data2 = mysqli_fetch_assoc($result2);
-				afficheVenteClient($data,$data2);
+				afficheVenteVendeur($data,$data2);
 			}
 		}
 		
@@ -35,7 +35,7 @@ function affichageVendre($type, $id){
 }
 
 
-function afficheVenteClient($data, $data2){  
+function afficheVenteVendeur($data, $data2){  
 	$IdVendeur = $data['IdVendeur'];
 	$cheminPhoto = $data['Photo'];
 	echo '<li class="list-group-item">';
