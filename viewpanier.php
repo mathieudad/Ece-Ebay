@@ -86,11 +86,11 @@
                       <td>   </td>
                       <td>   </td>
                       <td class="text-center">
-                      <button type="button" class="btn btn-dark">
+                    <a href="tout.php">  <button type="button" class="btn btn-outline-dark">
                            Poursuivre vos achats
-                      </button></td>
-                    <td class="text-right">
-                      <button type="button" class="btn btn-dark">
+                      </button>  </a> </td>
+                    <td class="text-right"> 
+                      <button type="button" class="btn btn-outline-dark">
                           Checkout <span class="y"></span>
                       </button></td>
                   </tr>

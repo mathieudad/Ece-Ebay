@@ -64,15 +64,15 @@ function afficheVente($data){
 				<div class="media">
 						<a class="thumbnail pull-left" href="#"> <img class="media-object" src="{$data['Photo']} " style="width: 72px; height: 72px;"> </a>
 						<div class="media-body ">
-								<h5 class="mt-0 font-weight-bold mb-2 ml-2"> <a style="color:black" href="produit.php?id={$data['IdVente']}">{$data['Nom']}</a></h5>
-							<h6 class="mt-0 font-weight-bold mb-2 ml-2"> Vendeur : <a style="color:black" href="#">Nom du vendeur</a></h6>
+								<h5 class="mt-0 font-weight-bold mb-2 ml-2"> <a style="color:black" href="viewproduit.php?id={$data['IdVente']}">{$data['Nom']}</a></h5>
+							<h6 class="mt-0 mb-2 ml-2"> Vendeur : <a style="color:black" href="#">Nom du vendeur</a></h6>
 							</div>
 			</div></td>
 			<td> </td>
 			<td> </td>
-			<td class="col-sm-1 col-md-1 text-center"><strong>{$data['PrixAchatImmediat']}€ </strong></td>
+			<td class="col-sm-1 col-md-1 text-center"><strong>{$data['PrixAchatImmediat']} € </strong></td>
 			<td class="col-sm-1 col-md-1">
-			<button type="button" class="btn btn-danger">
+			<button type="button" class="btn btn-outline-danger">
 					<span class="glyphicon glyphicon-remove"></span> Supprimer cet article
 			</button></td>
 	</tr>
