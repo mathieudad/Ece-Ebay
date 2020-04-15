@@ -38,10 +38,10 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link"style="color:black" href="#">Mon compte</a>
+        <a class="nav-link"style="color:black" href="viewcompte.php">Mon compte</a>
       </li>
       <li class="nav-item">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="viewpanier.php">
           <img src="panier.png" width="50" height="50" class="d-inline-block align-top" alt="">
 
         </a>
@@ -57,7 +57,7 @@
   <section class="jumbotron text-center" style=" background-image: url(vip.jpg)" >
     <div class="container">
       <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">ACCESSOIRES VIP</h1>
-      <p
+      
     </div>
   </section>
 
@@ -70,8 +70,8 @@
           <!-- list group item-->
           <?php
 
-          include 'traitementVip.php';
-
+          include 'traitementCategories.php';
+            affichageCategorie("Accessoire VIP");
             ?>
 
           </ul> <!-- End -->

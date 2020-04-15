@@ -41,7 +41,7 @@
         <a class="nav-link"style="color:black" href="viewcompte.php">Mon compte</a>
       </li>
       <li class="nav-item">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="viewpanier.php">
           <img src="panier.png" width="50" height="50" class="d-inline-block align-top" alt="">
 
         </a>
@@ -54,10 +54,10 @@
     </ul>
   </nav>
 
-  <section class="jumbotron text-center" style="background-image:url(musee.jpg);" >
+  <section class="jumbotron text-center" style="background-image:url(archi2.jpg);" >
     <div class="container">
       <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">MON COMPTE</h1>
-      <p
+
     </div>
   </section>
       <?php

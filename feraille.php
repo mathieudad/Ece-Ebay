@@ -38,10 +38,10 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link"style="color:black" href="#">Mon compte</a>
+        <a class="nav-link"style="color:black" href="viewcompte.php">Mon compte</a>
       </li>
       <li class="nav-item">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="viewpanier.php">
           <img src="panier.png" width="50" height="50" class="d-inline-block align-top" alt="">
 
         </a>
@@ -57,7 +57,7 @@
   <section class="jumbotron text-center" style=" background-image: url(diademe.png)" >
     <div class="container">
       <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">FERRAILLES & TRESORS</h1>
-      <p
+      
     </div>
   </section>
 
@@ -69,7 +69,9 @@
         <ul class="list-group shadow">
           <!-- list group item-->
           <?php
-                include 'traitementFerraille.php';
+
+          include 'traitementCategories.php';
+            affichageCategorie("Ferraille ou Tresor");
             ?>
 
           </ul> <!-- End -->
