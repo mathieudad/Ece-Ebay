@@ -1,0 +1,42 @@
+#header
+{
+	text-align: center;
+	padding: 5px;
+}
+
+#nav
+{
+background-color: black;
+color : white;
+text-align: left;
+clear: both;
+}
+
+#text
+{
+background-color: black;
+color : blue;
+text-align: center;
+clear: both;
+}
+
+#section
+{
+background-color: black;
+color: black;
+height: 100%;
+width: 100%;
+}
+
+#footer{
+background-color: black;
+color : white;
+text-align: left;
+clear: both;
+padding : 5px;
+}
+
+.carrousel-caption
+{
+	color:black;
+}
