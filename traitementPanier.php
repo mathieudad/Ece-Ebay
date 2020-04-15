@@ -2,7 +2,7 @@
 
 function panier($type, $id){
 	if($type == "Vendeur" || $type == "Admin"){
-		echo "Vous etes un $type vous n'avez pas acces au panier";
+		echo "Vous etes un $type vous n'avez pas acces au panier"; //dans un beau message
 		return;
 	}
 
@@ -17,44 +17,65 @@ function panier($type, $id){
 			$sqlPanier = "SELECT Panier FROM Client WHERE IdClient = $id;";
 			$resultPanier = mysqli_query($db_handle, $sqlPanier);
 			$data = mysqli_fetch_assoc($resultPanier);
-			affichePanierDuClient($data, $db_handle);		
-	}else { 
-		echo "Database not found"; 
+			affichePanierDuClient($data, $db_handle);
+	}else {
+		echo "Database not found";
 	}
-	//fermer la connexion 
+	//fermer la connexion
 	mysqli_close($db_handle);
 }
 
 function affichePanierDuClient($data,$db_handle){
+	$total=0;
 	$panier = $data['Panier'];
 	$tok = strtok($panier,",");
 
 	while ($tok !== false) {
-		afficheVenteFavorite($tok,$db_handle);
+		$total=afficheVenteFavorite($tok,$db_handle,$total);
   		$tok = strtok(",");
+
 	}
-	echo "affichage fini";
+
+	echo <<<FOOBAR
+	<tr>
+			<td>   </td>
+			<td>   </td>
+			<td>   </td>
+			<td><h3 class="text-center">Total</h3></td>
+			<td class="text-right"><h3> {$total} €</h3></td>
+	</tr>
+	FOOBAR;
 }
 
-function afficheVenteFavorite($id,$db_handle){
+function afficheVenteFavorite($id,$db_handle,$total){
 	$sqlFav = "SELECT * FROM Vente WHERE IdVente = $id;";
 	$resultFav = mysqli_query($db_handle, $sqlFav);
 	$data = mysqli_fetch_assoc($resultFav);
+	$total+=$data['PrixAchatImmediat'];
 	afficheVente($data);
+	return $total;
 }
 
 function afficheVente($data){
-	$IdVendeur = $data['IdVendeur'];
-	$cheminPhoto = $data['Photo'];
-	echo '<li class="list-group-item">';
-	echo '<div class="media align-items-lg-center flex-column flex-lg-row p-3">';
-	echo '<div class="media-body order-2 order-lg-1">';
-	echo '<h5 class="mt-0 font-weight-bold mb-2">'.$data['Nom'].'</h5>';
-	echo '<p class="font-italic text-muted mb-0 small">'.$data['Description'].'</p>';
-	echo '<div class="d-flex align-items-center justify-content-between mt-1">';
-	echo '<h6 class="font-weight-bold my-2">'.$data['PrixAchatImmediat'].'€</h6></div>';
-	echo"</div><img src='$cheminPhoto'";
-	echo 'alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2"></div>  </li>';
-}
 
+	echo <<< FOOBAR
+		<tr>
+				<td class="col-sm-8 col-md-6">
+				<div class="media">
+						<a class="thumbnail pull-left" href="#"> <img class="media-object" src="{$data['Photo']} " style="width: 72px; height: 72px;"> </a>
+						<div class="media-body ">
+								<h5 class="mt-0 font-weight-bold mb-2 ml-2"> <a style="color:black" href="produit.php?id={$data['IdVente']}">{$data['Nom']}</a></h5>
+							<h6 class="mt-0 font-weight-bold mb-2 ml-2"> Vendeur : <a style="color:black" href="#">Nom du vendeur</a></h6>
+							</div>
+			</div></td>
+			<td> </td>
+			<td> </td>
+			<td class="col-sm-1 col-md-1 text-center"><strong>{$data['PrixAchatImmediat']}€ </strong></td>
+			<td class="col-sm-1 col-md-1">
+			<button type="button" class="btn btn-danger">
+					<span class="glyphicon glyphicon-remove"></span> Supprimer cet article
+			</button></td>
+	</tr>
+	FOOBAR;
+}
 ?>

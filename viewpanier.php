@@ -54,34 +54,54 @@
     </ul>
   </nav>
 
-  <section class="jumbotron text-center" style="background-image:url(musee.jpg);" >
+  <section class="jumbotron text-center" style="background-image:url(archi.jpg);" >
     <div class="container">
-      <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">BON POUR MUSEE</h1>
-      
+      <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">MON PANIER</h1>
+
     </div>
   </section>
 
-  <div class="container py-5">
+  <div class="container">
+  <div class="row">
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+          <table class="table table-hover">
+              <thead>
+                  <tr>
+                      <th class=text-left>Objets</th>
+                      <th></th>
 
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <!-- List group-->
-        <ul class="list-group shadow">
-          <!-- list group item-->
-          <?php
+                      <th> </th>
+                      <th class="text-center">Prix</th>
+                      <th> </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <?php include'traitementPanier.php';
+                  panier(Client,2);
+                    ?>
 
-          include 'traitementCategories.php';
-            affichageCategorie("Bon pour le Musee");
-            ?>
 
-          </ul> <!-- End -->
-        </div>
+                  <tr>
+                      <td>   </td>
+                      <td>   </td>
+                      <td>   </td>
+                      <td class="text-center">
+                      <button type="button" class="btn btn-dark">
+                           Poursuivre vos achats
+                      </button></td>
+                    <td class="text-right">
+                      <button type="button" class="btn btn-dark">
+                          Checkout <span class="y"></span>
+                      </button></td>
+                  </tr>
+              </tbody>
+          </table>
       </div>
-    </div>
+  </div>
+</div>
+    </body>
 
-  </body>
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-  </html>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    </html>
