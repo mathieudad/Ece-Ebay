@@ -2,8 +2,8 @@
 
 function affichageVendre($type, $id){
 
-	if($type == "Client"){
-			echo "Cette page est reservée aux achteurs";
+	if($type == "Client" || $type = 'Admin'){
+			echo "Vous etes $type, Cette page est reservée aux achteurs";
 			return;
 	}
 	//identifier votre BDD
