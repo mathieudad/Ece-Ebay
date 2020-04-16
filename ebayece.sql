@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 14 avr. 2020 à 14:52
+-- Généré le :  jeu. 16 avr. 2020 à 12:35
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -63,6 +63,13 @@ CREATE TABLE IF NOT EXISTS `autoenchere` (
   KEY `c10` (`IdVente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `autoenchere`
+--
+
+INSERT INTO `autoenchere` (`IdVente`, `IdClient`, `PrixMax`) VALUES
+(1, 1, 590);
+
 -- --------------------------------------------------------
 
 --
@@ -98,8 +105,8 @@ CREATE TABLE IF NOT EXISTS `client` (
 
 INSERT INTO `client` (`IdClient`, `Nom`, `Prenom`, `E-mail`, `Pseudo`, `MotDePasse`, `Adresse`, `CodePostal`, `Ville`, `Pays`, `Telephone`, `Panier`, `TypeCarte`, `NumCarte`, `NomCarte`, `DateExpCarte`, `CodeCarte`, `PorteMonnaie`) VALUES
 (1, 'Simpson', 'Bart', 'bartsimpson@edu.ece.fr', 'bart', 'bart', '123 route de bart', 13009, 'Springfield', 'USA', '0625032528', NULL, 'Visa', '1234123412341234', 'Bart Simpson', '12/2020', 1234, 0),
-(2, 'Simpson', 'Lisa', 'lisasimpson@edu.ece.fr', 'lisa', 'lisa', '123 route de bart', 13009, 'Springfield', 'USA', '0625032529', NULL, 'Visa', '3456345634563456', 'Lisa Simpson', '08/2020', 1414, 0),
-(3, 'Simpson', 'Maggie', 'maggiesimpson@edu.ece.fr', 'mag', 'maggie', '123 route de bart', 13009, 'Springfield', 'USA', '0625032529', NULL, 'MasterCard', '1234567812345678', 'Maggie Simpson', '12/2022', 2341, 10000);
+(2, 'Simpson', 'Lisa', 'lisasimpson@edu.ece.fr', 'lisa', 'lisa', '123 route de bart', 13009, 'Springfield', 'USA', '0625032529', '1,2,3,4', 'Visa', '3456345634563456', 'Lisa Simpson', '08/2020', 1414, 0),
+(3, 'Simpson', 'Maggie', 'maggiesimpson@edu.ece.fr', 'mag', 'maggie', '123 route de bart', 13009, 'Springfield', 'USA', '0625032529', '1', 'MasterCard', '1234567812345678', 'Maggie Simpson', '12/2022', 2341, 10000);
 
 -- --------------------------------------------------------
 
@@ -112,10 +119,18 @@ CREATE TABLE IF NOT EXISTS `enchere` (
   `IdVente` int(11) NOT NULL,
   `IdClient` int(11) NOT NULL,
   `PrixActuel` int(6) NOT NULL,
-  PRIMARY KEY (`IdVente`,`IdClient`),
+  PRIMARY KEY (`IdVente`),
   KEY `c8` (`IdClient`),
   KEY `c7` (`IdVente`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `enchere`
+--
+
+INSERT INTO `enchere` (`IdVente`, `IdClient`, `PrixActuel`) VALUES
+(1, 1, 521),
+(3, 2, 1150);
 
 -- --------------------------------------------------------
 
@@ -154,9 +169,16 @@ CREATE TABLE IF NOT EXISTS `negociation` (
   `NbNego` int(2) NOT NULL,
   `PrixNego` int(6) NOT NULL,
   PRIMARY KEY (`IdVente`,`IdClient`),
-  KEY `c3` (`IdClient`),
-  KEY `c2` (`IdVente`)
+  KEY `c3` (`IdVente`),
+  KEY `c2` (`IdClient`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `negociation`
+--
+
+INSERT INTO `negociation` (`IdVente`, `IdClient`, `NbNego`, `PrixNego`) VALUES
+(2, 2, 0, 60);
 
 -- --------------------------------------------------------
 
@@ -204,8 +226,9 @@ CREATE TABLE IF NOT EXISTS `vente` (
   `Categorie` enum('Ferraille ou Tresor','Bon pour le Musee','Accessoire VIP') NOT NULL,
   `PrixDepart` int(5) NOT NULL,
   `PrixAchatImmediat` int(6) NOT NULL,
-  `TypeVente` enum('Négociation','Enchère') NOT NULL,
+  `TypeVente` enum('Negociation','Enchere') NOT NULL,
   `DateAjout` date NOT NULL,
+  `DateFin` date NOT NULL,
   PRIMARY KEY (`IdVente`),
   KEY `c1` (`IdVendeur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
@@ -214,11 +237,11 @@ CREATE TABLE IF NOT EXISTS `vente` (
 -- Déchargement des données de la table `vente`
 --
 
-INSERT INTO `vente` (`IdVente`, `IdVendeur`, `Nom`, `Photo`, `Video`, `Description`, `Categorie`, `PrixDepart`, `PrixAchatImmediat`, `TypeVente`, `DateAjout`) VALUES
-(1, 1, 'Montre Bulova', 'PhotoItem/Montre.png', NULL, 'Une super montre jamais portée!', 'Accessoire VIP', 500, 2000, 'Enchère', '2020-04-10'),
-(2, 2, 'Bureau en Bois', 'PhotoItem/Bureau.png', NULL, 'Un super bureau sur lequel on peut travailler', 'Ferraille ou Tresor', 50, 400, 'Négociation', '2020-04-13'),
-(3, 1, 'Statue Bronze', 'PhotoItem/Statue.png', NULL, 'Une statue de collection a placer dans un Musée', 'Bon pour le Musee', 1000, 10000, 'Enchère', '2020-04-11'),
-(4, 2, 'Piece d\'époque', 'PhotoItem/Piece.png', NULL, 'Une piece datant de 1844', 'Ferraille ou Tresor', 2, 20, 'Enchère', '2020-04-12');
+INSERT INTO `vente` (`IdVente`, `IdVendeur`, `Nom`, `Photo`, `Video`, `Description`, `Categorie`, `PrixDepart`, `PrixAchatImmediat`, `TypeVente`, `DateAjout`, `DateFin`) VALUES
+(1, 1, 'Montre Bulova', 'PhotoItem/Montre.png', NULL, 'Une super montre jamais portée!', 'Accessoire VIP', 500, 2000, 'Enchere', '2020-04-10', '2020-04-17'),
+(2, 2, 'Bureau en Bois', 'PhotoItem/Bureau.png', NULL, 'Un super bureau sur lequel on peut travailler', 'Ferraille ou Tresor', 50, 400, 'Negociation', '2020-04-13', '2020-04-23'),
+(3, 1, 'Statue Bronze', 'PhotoItem/Statue.png', NULL, 'Une statue de collection a placer dans un Musée', 'Bon pour le Musee', 1000, 10000, 'Enchere', '2020-04-11', '2020-04-23'),
+(4, 2, 'Piece d\'époque', 'PhotoItem/Piece.png', NULL, 'Une piece datant de 1844', 'Ferraille ou Tresor', 2, 20, 'Enchere', '2020-04-12', '2020-04-27');
 
 --
 -- Contraintes pour les tables déchargées
