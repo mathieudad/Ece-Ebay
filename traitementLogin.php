@@ -59,7 +59,7 @@ if ($db_found) {
     if($mdp == $data['MotDePasse'])  {
 
     $_SESSION['Type'] = $type;
-    $_SESSION['Id'] = $data['IdAdmin'];
+    $_SESSION['Id'] = (int)$data['IdVendeur'];
     header('Location:tout.php');
     exit();
     }
@@ -90,7 +90,7 @@ if ($db_found) {
     if($mdp == $data['MotDePasse'])  {
 
     $_SESSION['Type'] = $type;
-    $_SESSION['Id'] = $data['IdVendeur'];
+    $_SESSION['Id'] = (int)$data['IdAdmin'];
     header('Location:tout.php');
     exit();
     }
