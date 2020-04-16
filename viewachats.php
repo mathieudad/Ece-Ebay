@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <html lang="en">
 <head>
   <!-- Required meta tags -->
@@ -65,8 +67,9 @@
   <h4 style="font-weight:bold;color:black">Votre Historique d'achats</h4>
   <hr>
     <?php include'traitementAchat.php';
-     affichageVendre("Client",2); ?>
+     affichageAchat($_SESSION['Type'],$_SESSION['Id']); ?>
 </div>
+
 
   <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
