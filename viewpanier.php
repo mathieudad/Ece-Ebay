@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <html lang="en">
 <head>
   <!-- Required meta tags -->
@@ -77,7 +79,7 @@
               </thead>
               <tbody>
                   <?php include'traitementPanier.php';
-                  panier(Client,2);
+                  panier($_SESSION['Type'],$_SESSION['Id']);
                     ?>
 
 

@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <html lang="en">
 <head>
   <!-- Required meta tags -->
@@ -65,7 +67,7 @@
   <h4 style="font-weight:bold;color:black">Vos Ventes en Cours</h4>
   <hr>
     <?php include'traitementVendre.php';
-     affichageVendre("Vendeur",2); ?>
+     affichageVendre("Vendeur",$_SESSION['Id']); ?>
 </div>
 
   <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>

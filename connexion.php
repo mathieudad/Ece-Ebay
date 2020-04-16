@@ -11,9 +11,10 @@
 </head>
 
 
+
 <body>
 
-  
+
 	<div class="container align-content-center">
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
@@ -29,24 +30,34 @@
 
 
 				  <form action="traitementLogin.php" method="post">
-            <div class="title mb-2"> Veuillez entrer votre identifiant et votre mot de passe  </div>
+
+						<?php  if($_GET['error']==1)
+
+
+						echo '<div class="title mb-2" style="color:red"> Votre identifiant ou votre mot de passe est incorrect  </div>';
+						else echo '<div class="title mb-2"> Veuillez entrer votre identifiant et votre mot de passe  </div>';
+
+						?>
+
 						<div class="input-group mb-3">
 
-							<input type="text" class="form-control input_user" placeholder="Identifiant" name="pseudo">
+							<input type="text" name="pseudo" class="form-control input_user" placeholder="Identifiant" >
 						</div>
 						<div class="input-group mb-2">
 
-							<input type="password" class="form-control input_pass" placeholder="Mot de passe" name="mdp">
+							<input type="password" name="mdp" class="form-control input_pass" placeholder="Mot de passe" >
 						</div>
 						<div class="input-group mb-1">
 							<div class="input-group-append">
 								<td> Votre statut : <br></td>
 							</div>
-							<td class="ml-auto"> <select name="role" size="1">
+							<td class="ml-auto">
+
+              <select name="type" size="1">
 								<option>Client</option>
 								<option>Admin</option>
 								<option>Vendeur</option>
-								</SELECT> </td>
+              </select> </td>
 						</div>
 
 							<div class="d-flex justify-content-center mt-3 login_container">
