@@ -76,7 +76,6 @@ function afficheVente($data){
 	<h6 class="font-weight-bold my-2">{$data['PrixAchatImmediat']} €</h6></div>
 	</div>
 	<img src="{$data['Photo']}"alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
-
 	</div>  </li>
 	FOOBAR;
 }
