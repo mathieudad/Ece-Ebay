@@ -45,4 +45,6 @@ function nouvelleNego($idVente,$idClient,$prixNego,$db_handle){
 	}
 }
 
+ajoutNego(70,2,3);
+
 ?>
