@@ -34,7 +34,7 @@
         <a class="nav-link" style="color:black" href="#">Achat</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Vendre mon produit</a>
+        <a class="nav-link" href="viewventes.php">Vendre mon produit</a>
       </li>
 
       <li class="nav-item">
@@ -89,7 +89,7 @@
                     <a href="tout.php">  <button type="button" class="btn btn-outline-dark">
                            Poursuivre vos achats
                       </button>  </a> </td>
-                    <td class="text-right"> 
+                    <td class="text-right">
                       <button type="button" class="btn btn-outline-dark">
                           Checkout <span class="y"></span>
                       </button></td>

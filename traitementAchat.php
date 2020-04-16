@@ -15,30 +15,62 @@ function affichageAchat($type, $id){
 	if ($db_found) {
 		$sqlClient = "SELECT * FROM Historique WHERE IdClient = $id;";
 		$resultClient = mysqli_query($db_handle, $sqlClient);
-		if (mysqli_num_rows($resultClient) == 0) { 
-			//le livre recherché n'existe pas 
-			echo "Aucun achat"; 
-		}else { 
+		if (mysqli_num_rows($resultClient) == 0) {
+			//le livre recherché n'existe pas
+			echo "Aucun achat";
+		}else {
 			while($data = mysqli_fetch_assoc($resultClient)){
 				afficheHistoClient($data);
 			}
 		}
-		
-	}else { 
-		echo "Database not found"; 
+
+	}else {
+		echo "Database not found";
 	}
-	//fermer la connexion 
+	//fermer la connexion
 	mysqli_close($db_handle);
 }
 
 
 function afficheHistoClient($data){
-	echo "Nom:" . $data['Nom'] . '<br>';
-	echo "Photo:" . $data['Photo'] . '<br>';
-	echo "Catégorie: " . $data['Categorie'] . '<br>';	
-	echo "Prix de Depart:" . $data['PrixDepart'] . '<br>';
-	echo "Prix d'achat : " . $data['CodePostal'] . '<br>';	
-	echo "Type d'Achat: " . $data['TypeAchat'] . '<br>';
+
+
+
+	echo "Prix d'achat : " . $data['CodePostal'] . '<br>';
+
+
+	echo <<< FOOBAR
+
+	<div class="border-card">
+ <img src="{$data['Photo']}"class="img-thumbnail" width=100px height=100px>
+	<div class="content-wrapper">
+	<div class="label-group fixed">
+	<p class="caption ml-5">Nom du produit</p>
+	<p class="title ml-5">{$data['Nom']}</p>
+	</div>
+	<div class="min-gap"></div>
+	<div class="label-group">
+	<p class="caption">Type d'achat</p>
+	<p class="title">{$data['TypeAchat']}</p>
+	</div>
+	<div class="min-gap"></div>
+	<div class="label-group">
+	<p class="caption">Catégorie</p>
+	<p class="title">{$data['Categorie']}</p>
+	</div>
+	<div class="min-gap"></div>
+	<div class="label-group">
+	<p class="caption">Prix de Départ </p>
+	<p class="title">{$data['PrixDepart']}€</p>
+	</div>
+	<div class="min-gap"></div>
+	<div class="label-group">
+	<p class="caption">Prix d'Achat </p>
+	<p class="title">{$data['PrixAchat']}€</p>
+	</div>
+</div>
+</div>
+FOOBAR;
 }
 
 ?>

@@ -35,7 +35,7 @@
         <a class="nav-link" style="color:black" href="#">Achat</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Vendre mon produit</a>
+        <a class="nav-link" href="viewventes.php">Vendre mon produit</a>
       </li>
 
       <li class="nav-item">
@@ -124,7 +124,7 @@ quis nostrud exercitation ullamco </p></dd>
 </span>
 
 </p>
-<a href="#" class="btn btn-lg btn-outline-dark text-uppercase"> <i class="fas fa-shopping-cart"></i> Faites une offre d'enchere</a>
+<a href="#" class="btn btn-lg btn-outline-dark text-uppercase"> <i class="fas fa-shopping-cart"></i> Faire une offre d'enchere</a>
 </article> <!-- card-body.// -->
   </aside> <!-- col.// -->
 </div> <!-- row.// -->
