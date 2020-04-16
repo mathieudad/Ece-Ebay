@@ -15,7 +15,7 @@ clear: both;
 #text
 {
 background-color: black;
-color : blue;
+color : white;
 text-align: center;
 clear: both;
 }
@@ -34,9 +34,4 @@ color : white;
 text-align: left;
 clear: both;
 padding : 5px;
-}
-
-.carrousel-caption
-{
-	color:black;
 }
