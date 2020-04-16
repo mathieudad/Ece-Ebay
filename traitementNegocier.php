@@ -11,16 +11,17 @@ function traitementNegocierVendeur($prixNego, $idVente, $idClient){
 	$db_found = mysqli_select_db($db_handle, $database);
 
 	if ($db_found) {
-		$sqlNego = "SELECT * FROM Negociation where IdVente = $idVente AND IdClient = $idClient;";
+		$sqlNego = "SELECT * FROM Negociation WHERE IdVente = $idVente AND IdClient = $idClient;";
 		$resultNego = mysqli_query($db_handle,$sqlNego);
 		$data = mysqli_fetch_assoc($resultNego);
-		if($data['NbNego']=4){
+		if($data['NbNego']==4){
 			echo "vous ne pouvez plus negocier";
 		}
-		elseif($data['PrixNego']<$prixNego)
-			echo "vous ne pouvez pas proposer un prix superieur";
+		elseif($data['PrixNego']>$prixNego)
+			echo "vous ne pouvez pas proposer un prix inferieur";
 		else{
-			$sqladd = "UPDATE Negociation SET PrixNego = $prixNego, NbNego += NbNego WHERE negociation.IdClient = $idClient AND negociation.IdVente = $idVente" ;
+			$newNbNego = $data['NbNego']+1;
+			$sqladd = "UPDATE negociation SET PrixNego = '$prixNego', NbNego = '$newNbNego' WHERE negociation.IdClient = $idClient AND negociation.IdVente = $idVente;" ;
 			mysqli_query($db_handle, $sqladd);
 		}
 
@@ -41,15 +42,16 @@ function traitementNegocierClient($prixNego, $idVente, $idUser){
 	$db_found = mysqli_select_db($db_handle, $database);
 
 	if ($db_found) {
-		$sqlNego = 'SELECT * FROM Negociation where IdVente = $idVente AND IdClient = $idUser';
+		$sqlNego = "SELECT * FROM Negociation WHERE IdVente = $idVente AND IdClient = $idUser;";
 		$resultNego = mysqli_query($db_handle,$sqlNego);
 		$data = mysqli_fetch_assoc($resultNego);
-		if($data['NbNego']=4)
+		if($data['NbNego']==4)
 			echo "vous ne pouvez plus negocier";
-		elseif($data['PrixNego']>$prixNego)
-			echo "vous ne pouvez pas proposer un prix inferieur";
+		elseif($data['PrixNego']<$prixNego)
+			echo "vous ne pouvez pas proposer un prix superieur";
 		else{
-			$sqladd = "UPDATE Negociation SET PrixNego = $prixNego, NbNego += NbNego WHERE negociation.IdClient = $idUser AND negociation.IdVente = $idVente" ;
+			$newNbNego = $data['NbNego']+1;
+			$sqladd = "UPDATE negociation SET PrixNego = '$prixNego', NbNego = '$newNbNego' WHERE negociation.IdClient = $idUser AND negociation.IdVente = $idVente;" ;
 			mysqli_query($db_handle, $sqladd);
 		}
 
@@ -60,6 +62,6 @@ function traitementNegocierClient($prixNego, $idVente, $idUser){
 	mysqli_close($db_handle);
 }
 
-traitementNegocierVendeur(40,2,2);
+traitementNegocierClient(30,2,2);
 
 ?>
