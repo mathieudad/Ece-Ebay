@@ -34,7 +34,7 @@
         <a class="nav-link" style="color:black" href="#">Achat</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Vendre mon produit</a>
+        <a class="nav-link" href="viewventes.php">Vendre mon produit</a>
       </li>
 
       <li class="nav-item">
@@ -57,7 +57,7 @@
   <section class="jumbotron text-center" style="background-image:url(musee.jpg);" >
     <div class="container">
       <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">BON POUR MUSEE</h1>
-      
+
     </div>
   </section>
 
