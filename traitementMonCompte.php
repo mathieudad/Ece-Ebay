@@ -47,36 +47,27 @@ function afficheVendeur($data){
 			<div class="row">
 					<div class="col-12">
 							<div class="card">
-
-									<div class="card-body">
+								<div class="card-body">
 											<div class="card-title mb-4">
 													<div class="d-flex justify-content-start">
 													<div class="userData ml-3">
 															<h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">{$data['Prenom']} {$data['Nom']}</h2>
 													<div class="image-container">
 																	 <img src="{$data['Photo']}" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
-
 															 </div>
-
-
 															</div>
-
 													</div>
 											</div>
-
 											<div class="row">
 													<div class="col-12">
 															<ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
 																	<li class="nav-item">
 																			<a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true"style="color:grey">Informations</a>
 																	</li>
-																	
-															</ul>
+																</ul>
 															<div class="tab-content ml-1" id="myTabContent">
 																	<div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
-
-
-																			<div class="row">
+																	<div class="row">
 																					<div class="col-sm-3 col-md-2 col-5">
 																							<label style="font-weight:bold;">Nom :</label>
 																					</div>
@@ -85,9 +76,7 @@ function afficheVendeur($data){
 																					</div>
 																			</div>
 																			<hr />
-
-
-																			<div class="row">
+																		<div class="row">
 																					<div class="col-sm-3 col-md-2 col-5">
 																							<label style="font-weight:bold;">Email :</label>
 																					</div>
@@ -105,26 +94,20 @@ function afficheVendeur($data){
 																					</div>
 																			</div>
 																			<hr />
-
-
-																			<div class="row">
+																		<div class="row">
 																					<div class="col-sm-3 col-md-2 col-5">
 																							<label style="font-weight:bold;">Pays :</label>
 																					</div>
 																					<div class="col-md-8 col-6">
 																							{$data['Pays']}
 																					</div>
-																			</div>
-
+																		</div>
 																	</div>
 															</div>
 													</div>
 											</div>
-
-
+											</div>
 									</div>
-
-							</div>
 					</div>
 			</div>
 	</div>
@@ -137,20 +120,17 @@ function afficheClient($data){
 			<div class="row">
 					<div class="col-12">
 							<div class="card">
-
-									<div class="card-body">
+							<div class="card-body">
 											<div class="card-title mb-4">
 													<div class="d-flex justify-content-start">
 															<div class="userData ml-3">
 																	<h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">{$data['Prenom']} {$data['Nom']}</h2>
-
-															</div>
+																</div>
 															<div class="ml-auto">
 																	<input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
 															</div>
 													</div>
 											</div>
-
 											<div class="row">
 													<div class="col-12">
 															<ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
@@ -163,9 +143,7 @@ function afficheClient($data){
 															</ul>
 															<div class="tab-content ml-1" id="myTabContent">
 																	<div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
-
-
-																			<div class="row">
+																	<div class="row">
 																					<div class="col-sm-3 col-md-2 col-5">
 																							<label style="font-weight:bold;">Nom :</label>
 																					</div>
@@ -183,8 +161,7 @@ function afficheClient($data){
 																					</div>
 																			</div>
 																			<hr />
-
-																			<div class="row">
+																	<div class="row">
 																					<div class="col-sm-3 col-md-2 col-5">
 																							<label style="font-weight:bold;">Email :</label>
 																					</div>
@@ -193,9 +170,7 @@ function afficheClient($data){
 																					</div>
 																			</div>
 																			<hr />
-
-
-																			<div class="row">
+																		<div class="row">
 																					<div class="col-sm-3 col-md-2 col-5">
 																							<label style="font-weight:bold;">Adresse :</label>
 																					</div>
@@ -203,8 +178,7 @@ function afficheClient($data){
 																							{$data['Adresse']}
 																					</div>
 																			</div>
-
-																			<div class="row">
+																	<div class="row">
 																					<div class="col-sm-3 col-md-2 col-5">
 																							<label >Code Postal :</label>
 																					</div>
@@ -212,8 +186,7 @@ function afficheClient($data){
 																							{$data['CodePostal']}
 																					</div>
 																			</div>
-
-																			<div class="row">
+																		<div class="row">
 																					<div class="col-sm-3 col-md-2 col-5">
 																							<label>Ville : </label>
 																					</div>
@@ -229,9 +202,7 @@ function afficheClient($data){
 																							{$data['Pays']}
 																					</div>
 																			</div>
-
-
-																	</div>
+																</div>
 																	<div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
 																		<div class="row">
 																				<div class="col-sm-3 col-md-2 col-5">
@@ -259,15 +230,11 @@ function afficheClient($data){
 																						{$data['PorteMonnaie']}
 																				</div>
 																		</div>
-
 																	</div>
 															</div>
 													</div>
 											</div>
-
-
 									</div>
-
 							</div>
 					</div>
 			</div>
