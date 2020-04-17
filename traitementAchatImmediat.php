@@ -31,8 +31,9 @@ function traitement($idClient,$idVente,$db_handle){
 	$categorie = $dataVente['Categorie'];
 	$prixDepart = $dataVente['PrixDepart'];
 	$prixAchat = $dataVente['PrixAchatImmediat'];
+	$descrition = $dataVente['Descrition'];
 
-	$sqlHisto = "INSERT INTO `historique` (`IdVente`, `IdClient`, `IdVendeur`, `Nom`, `Photo`, `Video`, `Categorie`, `PrixDepart`, `PrixAchat`, `TypeAchat`) VALUES ('$idVente', '$idClient', '$idVendeur', '$nom', '$photo', NULL, '$categorie', '$prixDepart', '$prixAchat', 'Immediat');";
+	$sqlHisto = "INSERT INTO `historique` (`IdVente`, `IdClient`, `IdVendeur`, `Nom`, `Photo`, `Video`, `Categorie`, `PrixDepart`, `PrixAchat`, `TypeAchat`, Descrition) VALUES ('$idVente', '$idClient', '$idVendeur', '$nom', '$photo', NULL, '$categorie', '$prixDepart', '$prixAchat', 'Immediat','$descrition');";
 	$res = mysqli_query($db_handle, $sqlHisto);
 
 	if($dataVente['TypeVente']=='Negociation'){
