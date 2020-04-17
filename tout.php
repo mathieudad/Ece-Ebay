@@ -31,7 +31,7 @@
 
     <ul class="navbar-nav ml-auto align-items-end" >
       <li class="nav-item">
-        <a class="nav-link" style="color:black" href="viewachats">Achat</a>
+        <a class="nav-link" style="color:black" href="viewachats.php">Achat</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="viewventes.php">Vendre mon produit</a>

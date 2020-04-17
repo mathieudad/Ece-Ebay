@@ -4,7 +4,7 @@
 function ajoutPanier($idClient, $idVente){
 	//identifier votre BDD
 	$database = "ebayece";
-
+	$erreur=1;
 	//connectez-vous dans votre BDD
 	$db_handle = mysqli_connect('localhost', 'root','');
 	$db_found = mysqli_select_db($db_handle, $database);
@@ -23,13 +23,17 @@ function ajoutPanier($idClient, $idVente){
 				$panier = $data['Panier'].',' . $idVente;
 				$sqladd = "UPDATE client SET Panier = '$panier' WHERE client.IdClient = $idClient";
 				mysqli_query($db_handle, $sqladd);
-			}	
-		} 
+			}
+			else{
+				$erreur=3;
+			}
+		}
 	}else {
 		echo "Database not found";
 	}
 	//fermer la connexion
 	mysqli_close($db_handle);
+	return $erreur;
 }
 
 function verifPanier($data,$idVente){
@@ -44,4 +48,8 @@ function verifPanier($data,$idVente){
 	return true;
 }
 
+session_start();
+$result = ajoutPanier($_SESSION['Id'],$_GET['idvente']);
+header('Location: viewproduit.php?id='.$_GET['idvente'].'&result='.$result);
+exit;
 ?>

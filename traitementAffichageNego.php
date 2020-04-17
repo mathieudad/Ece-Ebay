@@ -11,9 +11,9 @@ function affichageNego($id, $type){
 
 	if ($db_found) {
 		if($type == 'Admin')
-			echo "Vous n'avez pas de nego vous etes admin";
+		echo "Vous n'avez pas de nego vous etes admin";
 		//on regarde si le client a deja fait une nego si oui on quitte
-		//si non on cree la nego 
+		//si non on cree la nego
 		elseif($type == 'Vendeur'){
 			traitementAffichageVendeur($id,$db_handle);
 
@@ -29,7 +29,7 @@ function affichageNego($id, $type){
 }
 
 
-function traitementAffichageVendeur($id,$db_handle){
+function traitementAffichageVendeur($id,$db_handle){ //idsession
 	$sqlVente = "SELECT * FROM Vente WHERE IdVendeur = $id;";
 	$resultVente = mysqli_query($db_handle, $sqlVente);
 	if( mysqli_num_rows($resultVente) == 0){
@@ -41,14 +41,16 @@ function traitementAffichageVendeur($id,$db_handle){
 			$vente = $dataVente['IdVente'];
 			$sqlNego = "SELECT * FROM Negociation WHERE IdVente = $vente;";
 			$resultNego = mysqli_query($db_handle, $sqlNego);
-			$dataNego =  mysqli_fetch_assoc($resultNego);
-
-			$sqlVentedeNego = "SELECT * FROM Vente WHERE IdVente = $vente;";
-			$resultVentedeNego = mysqli_query($db_handle, $sqlVentedeNego);
-			if(mysqli_num_rows($resultVentedeNego) != 0){
-				$dataVentedeNego =  mysqli_fetch_assoc($resultVentedeNego);
-				$aQui = aQuiLeTour($dataNego);
-				affichageNegoCoteVendeur($dataNego, $dataVentedeNego, $aQui);
+			while($dataNego = mysqli_fetch_assoc($resultNego))
+			{
+				$nego=$dataNego['IdVente'];
+				$sqlVentedeNego = "SELECT * FROM Vente WHERE IdVente = $nego;";
+				$resultVentedeNego = mysqli_query($db_handle, $sqlVentedeNego);
+				if(mysqli_num_rows($resultVentedeNego) != 0){
+					$dataVentedeNego =  mysqli_fetch_assoc($resultVentedeNego);
+					$aQui = aQuiLeTour($dataNego);
+					affichageNegoCoteVendeur($dataNego, $dataVentedeNego, $aQui);
+				}
 			}
 		}
 	}
@@ -56,11 +58,94 @@ function traitementAffichageVendeur($id,$db_handle){
 
 function affichageNegoCoteVendeur($dataNego,$dataVenteAssocie,$aQuiLeTour)
 {
-
-	echo "$aQuiLeTour".'<br>';
-	echo "idVente:" . $dataVenteAssocie['IdVente'] . '<br>';
-	echo "idNego:" . $dataNego['IdVente'] . '<br>';
-	echo "prix:" . $dataNego['PrixNego'] . '<br>';
+	$tour=$dataNego['NbNego']+1;
+	if($aQuiLeTour =="Client"){
+		echo <<< FOOBAR
+		<div class="border-card">
+		<a href="viewproduit.php?id={$dataVenteAssocie['IdVente']}" style="text-decoration:none">
+		<img src="{$dataVenteAssocie['Photo']}"class="img-thumbnail" width=100px height=100px>
+		</a>
+		<div class="content-wrapper">
+		<div class="label-group fixed">
+		<p class="caption ml-4">Nom du produit</p>
+		<p class="title ml-4">{$dataVenteAssocie['Nom']}</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">Prix de Départ </p>
+		<p class="title">{$dataVenteAssocie['PrixDepart']}€</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">Prix d'Achat Immediat </p>
+		<p class="title">{$dataVenteAssocie['PrixAchatImmediat']}€</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">Prix Négociation </p>
+		<p class="title">{$dataNego['PrixNego']}€</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">En attente du </p>
+		<p class="title">{$aQuiLeTour}</p>
+		</div>
+		</div>
+		</div>
+		FOOBAR;
+	}
+	else{
+		echo <<< FOOBAR
+		<div class="border-card">
+		<a href="viewproduit.php?id={$dataVenteAssocie['IdVente']}" style="text-decoration:none">
+		<img src="{$dataVenteAssocie['Photo']}"class="img-thumbnail" width=100px height=100px>
+		</a>
+		<div class="content-wrapper">
+		<div class="label-group">
+		<p class="caption ml-4">Nom du produit</p>
+		<p class="title ml-4">{$dataVenteAssocie['Nom']}</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">Départ </p>
+		<p class="title">{$dataVenteAssocie['PrixDepart']}€</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">Achat Immediat </p>
+		<p class="title">{$dataVenteAssocie['PrixAchatImmediat']}€</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">Prix Négociation </p>
+		<p class="title">{$dataNego['PrixNego']}€</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">Client n° </p>
+		<p class="title">{$dataNego['IdClient']}</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">Tour n° </p>
+		<p class="title">{$tour}</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<form action="traitementNegocier.php?idvente={$dataNego['IdVente']}&IdClient={$dataNego['IdClient']}" method="post">
+		<div class="input-group mb-3 ">
+		<input type="number" name="prix" class="form-control input_user " placeholder="Entrer ici un prix" >
+		</div>
+		<div class="d-flex  mt-3 login_container">
+		<input type="submit" class="btn btn-outline-dark text-uppercase" value="Negocier">
+		</div>
+		</form>
+		</div>
+		</div>
+		</div>
+		FOOBAR;
+	}
+	//si c'est son tour je met un bouton sinon juste sa nego en cours, au tour du client
 }
 
 
@@ -83,17 +168,94 @@ function traitementAffichageClient($id,$db_handle)
 }
 
 function affichageNegoCoteClient($dataNego,$dataVenteAssocie,$aQuiLeTour){
-	echo "$aQuiLeTour".'<br>';
-	echo "idVente:" . $dataVenteAssocie['IdVente'] . '<br>';
-	echo "idNego:" . $dataNego['IdVente'] . '<br>';
-	echo "prix:" . $dataNego['PrixNego'] . '<br>';
+	$tour=$dataNego['NbNego']+1;
+	if($aQuiLeTour =="Vendeur"){
+		echo <<< FOOBAR
+		<div class="border-card">
+		<a href="viewproduit.php?id={$dataVenteAssocie['IdVente']}" style="text-decoration:none">
+		<img src="{$dataVenteAssocie['Photo']}"class="img-thumbnail" width=100px height=100px>
+		</a>
+		<div class="content-wrapper">
+		<div class="label-group fixed">
+		<p class="caption ml-4">Nom du produit</p>
+		<p class="title ml-4">{$dataVenteAssocie['Nom']}</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">Prix de Départ </p>
+		<p class="title">{$dataVenteAssocie['PrixDepart']}€</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">Prix d'Achat Immediat </p>
+		<p class="title">{$dataVenteAssocie['PrixAchatImmediat']}€</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">Prix Négociation </p>
+		<p class="title">{$dataNego['PrixNego']}€</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">En attente du </p>
+		<p class="title">{$aQuiLeTour}</p>
+		</div>
+		</div>
+		</div>
+		FOOBAR;
+	}else{
+		echo <<< FOOBAR
+		<div class="border-card">
+		<a href="viewproduit.php?id={$dataVenteAssocie['IdVente']}" style="text-decoration:none">
+		<img src="{$dataVenteAssocie['Photo']}"class="img-thumbnail" width=100px height=100px>
+		</a>
+		<div class="content-wrapper">
+		<div class="label-group">
+		<p class="caption ml-4">Nom du produit</p>
+		<p class="title ml-4">{$dataVenteAssocie['Nom']}</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">Départ </p>
+		<p class="title">{$dataVenteAssocie['PrixDepart']}€</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">Achat Immediat </p>
+		<p class="title">{$dataVenteAssocie['PrixAchatImmediat']}€</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">Prix Négociation </p>
+		<p class="title">{$dataNego['PrixNego']}€</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<p class="caption">Tour n° </p>
+		<p class="title">{$tour}</p>
+		</div>
+		<div class="min-gap"></div>
+		<div class="label-group">
+		<form action="traitementNegocier.php?idvente={$dataNego['IdVente']}&IdClient={$dataNego['IdClient']}" method="post">
+		<div class="input-group mb-3 ">
+		<input type="number" name="prix" class="form-control input_user " placeholder="Entrer ici un prix" >
+		</div>
+		<div class="d-flex  mt-3 login_container">
+		<input type="submit" class="btn btn-outline-dark text-uppercase" value="Negocier">
+		</div>
+		</form>
+		</div>
+		</div>
+		</div>
+		FOOBAR;
+	}
 }
 
 function aQuileTour($dataNego){
 	$nbNego = $dataNego['NbNego'];
 	if($nbNego%2 == 0)
-		return 'Vendeur';
-	else return 'Client;';
+	return 'Vendeur';
+	else return 'Client';
 }
 
 ?>

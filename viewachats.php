@@ -64,10 +64,29 @@
   </section>
 
   <div class=container>
+    <h4 style="font-weight:bold;color:black">Vos Negociations en cours</h4>
+    <hr>
+    <?php include'traitementAffichageNego.php';
+     affichageNego($_SESSION['Id'],$_SESSION['Type']); ?>
+     <hr>
   <h4 style="font-weight:bold;color:black">Votre Historique d'achats</h4>
   <hr>
     <?php include'traitementAchat.php';
      affichageAchat($_SESSION['Type'],$_SESSION['Id']); ?>
+
+     <?php $result = isset($_GET["result"])? $_GET["result"] : "";
+
+     if($result==3){
+       echo <<< FOOBAR
+       <script language="javascript"> alert("Vous ne pouvez pas entrer ce prix, l'offre n'a pas été ajoutée veuillez réessayer ou contacter un administrateur"); </script>
+       FOOBAR;
+     }
+
+     if($result==1){
+       echo <<< FOOBAR
+       <script language="javascript"> alert("Bravo, l'offre a été ajoutée, attendez maintenant la réponse de l'autre partie"); </script>
+       FOOBAR;
+     } ?>
 </div>
 
 

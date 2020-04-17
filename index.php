@@ -37,7 +37,6 @@
 
 						echo '<div class="title mb-2" style="color:red"> Votre identifiant ou votre mot de passe est incorrect  </div>';
 						else echo '<div class="title mb-2"> Veuillez entrer votre identifiant et votre mot de passe  </div>';
-
 						?>
 
 						<div class="input-group mb-3">
