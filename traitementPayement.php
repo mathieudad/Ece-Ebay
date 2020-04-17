@@ -43,7 +43,4 @@ function payement($prix,$idClient, $typeCarte, $numeroCarte, $nomCarte, $dateExp
 	//fermer la connexion
 	mysqli_close($db_handle);
 }
-
-payement(10,1,'Visa','1234123412341234','Bart Simpson','12/2020',123);
-
 ?>
