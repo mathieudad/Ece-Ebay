@@ -118,6 +118,7 @@ function traitementAffichageClient($idVente, $db_handle){
 
 function affichageVenteClient($dataVente,$db_handle){
 	//teste data type de vente et affiche en fonction sachant que c un client
+	$idVente=$dataVente['IdVente'];
 	echo <<< FOOBAR
 	<div class="container">
 	<div class="card">
@@ -158,7 +159,7 @@ FOOBAR;
 
  if($dataVente['TypeVente']=="Enchere")
  {
-	 $sql = "SELECT * FROM enchere WHERE IdVente = $IdVente;";
+	 $sql = "SELECT * FROM enchere WHERE IdVente = $idVente;";
 	 $result = mysqli_query($db_handle, $sql);
 
 	 if (mysqli_num_rows($result) != 0) $data = mysqli_fetch_assoc($result);
@@ -199,7 +200,18 @@ FOOBAR;
 }
 
 if($dataVente['TypeVente']=="Negociation"){
+
+
+
 	echo <<< FOOBAR
+	<hr>
+		 <dl class="param param-feature">
+		 <dt>Prix de départ</dt>
+		 </dl>
+		 <p class="price-detail-wrap">
+		 <span class="price h3 text-warning">
+		   <span class="currency">EUR €</span><span class="num">{$dataVente['PrixDepart']}</span>
+		 </span>
 	 </p>
 	 <hr>
 	 <dl class="param param-feature">
