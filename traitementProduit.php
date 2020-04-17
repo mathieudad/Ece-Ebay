@@ -133,6 +133,7 @@ function affichageVenteClient($dataVente,$db_handle){
 	 <aside class="col-sm-7">
      <article class="card-body p-5">
        <h3 class="title mb-3">{$dataVente['Nom']}</h3>
+			 <hr>
 			 <dl class="item-property">
          <dt>Description</dt>
          <dd><p>{$dataVente['Description']}
@@ -179,7 +180,7 @@ FOOBAR;
 			 echo <<< FOOBAR
 			 <hr>
 			 <dl class="param param-feature">
-			 <dt>Prix Actuel/dt>
+			 <dt>Prix Actuel</dt>
 			 </dl>
 			 <p class="price-detail-wrap">
 			 <span class="price h3 text-warning">
@@ -190,7 +191,34 @@ FOOBAR;
 		 }
 	echo <<< FOOBAR
 	 </p>
-	 <a href="#" class="btn btn btn-outline-dark text-uppercase"> <i class="fas fa-shopping-cart"></i> Faire une offre d'enchere</a>
+	 <form action="traitementAjoutEnchere.php?idvente={$dataVente['IdVente']}" method="post">
+
+	   <div class="input-group mb-3">
+
+	     <input type="number" name="prix" class="form-control input_user" placeholder="Entrer ici votre prix" >
+	   </div>
+
+	     <div class="d-flex  mt-3 login_container">
+			 <input type="submit" class="btn btn-outline-dark text-uppercase" value="Faire une offre d'enchere">
+	  </div>
+	 </form>
+	 <hr>
+	 <dl class="param param-feature">
+	 <dt>Auto-Enchère Maximale</dt>
+	 </dl>
+	 <form action="traitementAjoutAutoEnchere.php?idvente={$dataVente['IdVente']}" method="post">
+
+	   <div class="input-group mb-3">
+
+	     <input type="number" name="prix" class="form-control input_user" placeholder="Entrer ici votre prix maximal pour l'auto-enchère" >
+	   </div>
+
+	     <div class="d-flex  mt-3 login_container">
+			 <input type="submit" class="btn btn-outline-dark text-uppercase" value="Faire une offre d'auto-enchere max">
+	  </div>
+	 </form>
+
+
 	 </article>
 	   </aside>
 	 </div>
@@ -217,7 +245,18 @@ if($dataVente['TypeVente']=="Negociation"){
 	 <dl class="param param-feature">
 	 <dt>Négociation</dt>
 	 </dl>
-	 <a href="#" class="btn btn btn-outline-dark text-uppercase"> <i class="fas fa-shopping-cart"></i> Proposer une négociation</a>
+	 <form action="traitementNouvelleNego.php?idvente={$dataVente['IdVente']}" method="post">
+
+		<div class="input-group mb-3">
+
+			<input type="number" name="prix" class="form-control input_user" placeholder="Entrez ici votre prix" >
+		</div>
+
+			<div class="d-flex  mt-3 login_container">
+			<input type="submit" class="btn btn-outline-dark text-uppercase" value="Proposer une négociation">
+	 </div>
+	</form>
+
 	 </article>
 		 </aside>
 	 </div>

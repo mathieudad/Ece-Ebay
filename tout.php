@@ -11,7 +11,7 @@
 </head>
 <body >
   <nav class="navbar navbar-expand-lg navbar-light align-items-end"  style="font-size:150%;font-weight:bold">
-    <a class="navbar-brand" href="index.html"> <img src="logo5.png"  alt=""></a>
+    <a class="navbar-brand" href="accueil.html"> <img src="logo5.png"  alt=""></a>
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item dropdown">
@@ -31,7 +31,7 @@
 
     <ul class="navbar-nav ml-auto align-items-end" >
       <li class="nav-item">
-        <a class="nav-link" style="color:black" href="#">Achat</a>
+        <a class="nav-link" style="color:black" href="viewachats">Achat</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="viewventes.php">Vendre mon produit</a>
