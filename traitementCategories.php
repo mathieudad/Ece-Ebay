@@ -72,6 +72,7 @@ function afficheVente($data){
 	<div class="media-body order-2 order-lg-1">
 	<a href="viewproduit.php?id={$data['IdVente']}" class="mt-0 font-weight-bold mb-2" style="color:black"> {$data['Nom']}  </a>
 	<p class="font-italic text-muted mb-0 small">{$data['Description']}</p>
+	<p class="text-muted mb-0 small" style="black">Catégorie de Vente : {$data['TypeVente']}</p>
 	<div class="d-flex align-items-center justify-content-between mt-1">
 	<h6 class="font-weight-bold my-2">{$data['PrixAchatImmediat']} €</h6></div>
 	</div>
@@ -79,6 +80,5 @@ function afficheVente($data){
 	</div>  </li>
 	FOOBAR;
 }
-
 
 ?>

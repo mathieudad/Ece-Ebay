@@ -52,11 +52,17 @@ function afficheVenteFavorite($id,$db_handle,$total){
 	$resultFav = mysqli_query($db_handle, $sqlFav);
 	$data = mysqli_fetch_assoc($resultFav);
 	$total+=$data['PrixAchatImmediat'];
-	afficheVente($data);
+	afficheVente($data,$db_handle);
 	return $total;
 }
 
-function afficheVente($data){
+function afficheVente($data,$db_handle){
+
+	$vendeur = $data['IdVendeur'];
+	$sql = "SELECT * FROM vendeur WHERE IdVendeur = $vendeur;";
+	$result= mysqli_query($db_handle, $sql);
+	$datavendeur = mysqli_fetch_assoc($result);
+	$nomvendeur=$datavendeur['Nom'];
 
 	echo <<< FOOBAR
 		<tr>
@@ -65,16 +71,18 @@ function afficheVente($data){
 						<a class="thumbnail pull-left" href="#"> <img class="media-object" src="{$data['Photo']} " style="width: 72px; height: 72px;"> </a>
 						<div class="media-body ">
 								<h5 class="mt-0 font-weight-bold mb-2 ml-2"> <a style="color:black" href="viewproduit.php?id={$data['IdVente']}">{$data['Nom']}</a></h5>
-							<h6 class="mt-0 mb-2 ml-2"> Vendeur : <a style="color:black" href="#">Nom du vendeur</a></h6>
+							<h6 class="mt-0 mb-2 ml-2"> Vendeur : {$nomvendeur}</h6>
 							</div>
 			</div></td>
 			<td> </td>
 			<td> </td>
 			<td class="col-sm-1 col-md-1 text-center"><strong>{$data['PrixAchatImmediat']} € </strong></td>
 			<td class="col-sm-1 col-md-1">
+			<a href="traitementSuppressionPanier.php?idvente={$data['IdVente']}" style="text-decoration:none">
 			<button type="button" class="btn btn-outline-danger">
 					<span class="glyphicon glyphicon-remove"></span> Supprimer cet article
-			</button></td>
+			</button>
+			</a></td>
 	</tr>
 	FOOBAR;
 }

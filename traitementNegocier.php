@@ -17,12 +17,15 @@ function traitementNegocierVendeur($prixNego, $idVente, $idClient){
 		if($data['NbNego']==4){
 			echo "vous ne pouvez plus negocier";
 		}
-		elseif($data['PrixNego']>$prixNego)
+		elseif($data['PrixNego']>$prixNego){
 			echo "vous ne pouvez pas proposer un prix inferieur";
+			$erreur=3; //erreur prix trop bas
+		}
 		else{
 			$newNbNego = $data['NbNego']+1;
 			$sqladd = "UPDATE negociation SET PrixNego = '$prixNego', NbNego = '$newNbNego' WHERE negociation.IdClient = $idClient AND negociation.IdVente = $idVente;" ;
 			mysqli_query($db_handle, $sqladd);
+			$erreur =1;
 		}
 
 	}else {
@@ -30,6 +33,8 @@ function traitementNegocierVendeur($prixNego, $idVente, $idClient){
 	}
 	//fermer la connexion
 	mysqli_close($db_handle);
+
+	return $erreur;
 }
 
 function traitementNegocierClient($prixNego, $idVente, $idUser){
@@ -47,12 +52,15 @@ function traitementNegocierClient($prixNego, $idVente, $idUser){
 		$data = mysqli_fetch_assoc($resultNego);
 		if($data['NbNego']==4)
 			echo "vous ne pouvez plus negocier";
-		elseif($data['PrixNego']<$prixNego)
+		elseif($data['PrixNego']<$prixNego){
 			echo "vous ne pouvez pas proposer un prix superieur";
+			$erreur=3;
+		}
 		else{
 			$newNbNego = $data['NbNego']+1;
 			$sqladd = "UPDATE negociation SET PrixNego = '$prixNego', NbNego = '$newNbNego' WHERE negociation.IdClient = $idUser AND negociation.IdVente = $idVente;" ;
 			mysqli_query($db_handle, $sqladd);
+			$erreur=1;
 		}
 
 	}else {
@@ -60,8 +68,25 @@ function traitementNegocierClient($prixNego, $idVente, $idUser){
 	}
 	//fermer la connexion
 	mysqli_close($db_handle);
+
+	return $erreur;
 }
 
-traitementNegocierClient(30,2,2);
+
+ session_start();
+ if($_SESSION['Type']=="Vendeur"){
+	 $prix = isset($_POST["prix"])? $_POST["prix"] : "";
+	 $error = traitementNegocierVendeur($prix,$_GET["idvente"],$_GET["IdClient"]);
+	 header('Location:viewachats.php?result='.$error);
+	 exit;
+ }
+ else{
+	 $prix = isset($_POST["prix"])? $_POST["prix"] : "";
+	 $error = traitementNegocierClient($prix,$_GET["idvente"],$_GET["IdClient"]);
+	 header('Location:viewachats.php?result='.$error);
+	 exit;
+ }
+
+
 
 ?>

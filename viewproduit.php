@@ -69,7 +69,19 @@
   $enchere = isset($_GET["enchere"])? $_GET["enchere"] : "";
   $nego = isset($_GET["nego"])? $_GET["nego"] : "";
   $autoenchere = isset($_GET["autoenchere"])? $_GET["autoenchere"] : "";
+  $result = isset($_GET["result"])? $_GET["result"] : "";
 
+  if($result==3){
+    echo <<< FOOBAR
+    <script language="javascript"> alert("Le produit est déjà dans votre panier"); </script>
+    FOOBAR;
+  }
+
+  if($result==1){
+    echo <<< FOOBAR
+    <script language="javascript"> alert("Le produit a été ajouté au panier"); </script>
+    FOOBAR;
+  }
   if($enchere==3){
     echo <<< FOOBAR
     <script language="javascript"> alert("Vous ne pouvez pas entrer ce prix, l'offre n'a pas été ajoutée"); </script>

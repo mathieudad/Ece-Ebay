@@ -18,12 +18,12 @@ function suppressionPanier($idClient, $idVente){
 		$panier = suppressionString($string,$idVente);
 		if($panier == 'null'){
 			$sqladd = "UPDATE client SET Panier = NULL WHERE client.IdClient = $idClient";
-			mysqli_query($db_handle, $sqladd);	 
+			mysqli_query($db_handle, $sqladd);
 		}else{
 			echo $panier;
 			$sqladd = "UPDATE client SET Panier = '$panier' WHERE client.IdClient = $idClient";
-			mysqli_query($db_handle, $sqladd);	 
-		} 
+			mysqli_query($db_handle, $sqladd);
+		}
 
 	}else {
 		echo "Database not found";
@@ -33,6 +33,7 @@ function suppressionPanier($idClient, $idVente){
 }
 
 function suppressionString($string,$idVente){
+	
 	if($string == $idVente){
 		$string = 'null';
 		return $string;
@@ -48,7 +49,12 @@ function suppressionString($string,$idVente){
 		}
 		return $string;
 	}
-	
+
 }
+
+			session_start();
+			suppressionPanier($_SESSION['Id'],$_GET['idvente']);
+			header('Location:viewpanier.php');
+			exit;
 
 ?>
