@@ -2,7 +2,7 @@
 <html>
     
 <head>
-	<title>Page de connexion</title>
+	<title>Page de paiement</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -22,47 +22,37 @@
 						
 						<div class="input-group mb-1">
 							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-key"></i></span>
+								<td> Carte <br></td>
 							</div>
-							<td> <SELECT name="role" size="1">
-								<OPTION>Visa
-								<OPTION>MasterCard
-								<OPTION>American Express
-								<OPTION>Paypal
-								</SELECT> </td>
+							<td class="ml-auto">
+
+              <select name="type" size="1">
+								<option>Visa</option>
+								<option>MasterCard</option>
+								<option>American Express</option>
+								<option>Paypal</option>
+              </select> </td>
 						</div>
 
 						<div class="input-group mb-3">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
-							</div>
-							<input type="number" class="form-control input_user" placeholder="Numéro de la Carte">
+							<input type="number" class="form-control input_user" placeholder="Numéro de carte">
 						</div>
 
 						<div class="input-group mb-3">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
-							</div>
-							<input type="text" class="form-control input_user" placeholder="Nom sur la carte">
+							<input type="text" name="pseudo" class="form-control input_user" placeholder="Nom sur la carte" >
+						</div>
+
+												<div class="input-group mb-3">
+							<input type="number" class="form-control input_user" placeholder="Date d'expiration carte">
 						</div>
 
 						<div class="input-group mb-3">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
-							</div>
-							<input type="number" class="form-control input_user" placeholder="Date d'expiration de la carte">
-						</div>
-
-						<div class="input-group mb-3">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
-							</div>
-							<input type="number" class="form-control input_user" placeholder="Code de sécurité">
+							<input type="number" class="form-control input_user" placeholder="Numéro de sécurité">
 						</div>
 
 						
 							<div class="d-flex justify-content-center mt-3 login_container">
-				 	<a href="Pres.html"><button type="button" name="button" class="btn login_btn">Confirmer</button></a>
+				 	<a href="Pres.html"><button type="submit" name="button" class="btn login_btn">Confirmer</button></a>
 				   </div>
 					</form>
 				</div>		
