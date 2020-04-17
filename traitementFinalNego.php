@@ -85,4 +85,6 @@ function refuser($idClient,$db_handle){
 	mysqli_query($db_handle, $sqlNego);
 }
 
+
+
 ?>
