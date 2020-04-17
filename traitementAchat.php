@@ -3,7 +3,7 @@
 function affichageAchat($type, $id){
 
 	if($type == "Vendeur" || $type == "Admin"){
-			echo "Vous etes $type Cette page est reservée aux achteurs";
+			echo "Vous etes sous le statut $type Cette page est reservée aux acheteurs";
 			return;
 	}
 	//identifier votre BDD

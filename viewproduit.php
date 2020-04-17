@@ -12,7 +12,7 @@
 </head>
 <body >
   <nav class="navbar navbar-expand-lg navbar-light align-items-end"  style="font-size:150%;font-weight:bold">
-    <a class="navbar-brand" href="index.html"> <img src="logo5.png"  alt=""></a>
+    <a class="navbar-brand" href="accueil.html"> <img src="logo5.png"  alt=""></a>
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item dropdown">
@@ -32,7 +32,7 @@
 
     <ul class="navbar-nav ml-auto align-items-end" >
       <li class="nav-item">
-        <a class="nav-link" style="color:black" href="#">Achat</a>
+        <a class="nav-link" style="color:black" href="viewachats.php">Achat</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="viewventes.php">Vendre mon produit</a>
@@ -64,8 +64,58 @@
 
 
   <?php
-    include 'traitementProduit.php';
-    affichageProduit($_GET['id'],$_SESSION['Type']);
+  include 'traitementProduit.php';
+  affichageProduit($_GET['id'],$_SESSION['Type']);
+  $enchere = isset($_GET["enchere"])? $_GET["enchere"] : "";
+  $nego = isset($_GET["nego"])? $_GET["nego"] : "";
+  $autoenchere = isset($_GET["autoenchere"])? $_GET["autoenchere"] : "";
+
+  if($enchere==3){
+    echo <<< FOOBAR
+    <script language="javascript"> alert("Vous ne pouvez pas entrer ce prix, l'offre n'a pas été ajoutée"); </script>
+    FOOBAR;
+  }
+
+  if($enchere==1){
+    echo <<< FOOBAR
+    <script language="javascript"> alert("Bravo, l'offre a été ajoutée, vous avez acquis l'enchère"); </script>
+    FOOBAR;
+  }
+  if($enchere==2){
+    echo <<< FOOBAR
+    <script language="javascript"> alert("Votre offre a été prise en compte mais un autre utilisateur a proposé un prix supérieur en auto-enchère"); </script>
+    FOOBAR;
+  }
+
+  if($nego==1){
+    echo <<< FOOBAR
+    <script language="javascript"> alert("Bravo, votre première offre a été prise en compte"); </script>
+    FOOBAR;
+  }
+  if($nego==2){
+    echo <<< FOOBAR
+    <script language="javascript"> alert("Vous ne pouvez pas proposer une offre à ce prix ou vous avez déjà proposé une négociation"); </script>
+    FOOBAR;
+  }
+  if($autoenchere==3){
+    echo <<< FOOBAR
+    <script language="javascript"> alert("Vous ne pouvez pas entrer ce prix, l'offre n'a pas été ajoutée"); </script>
+    FOOBAR;
+  }
+
+  if($autoenchere==1){
+    echo <<< FOOBAR
+    <script language="javascript"> alert("Bravo, l'offre a été ajoutée, vous avez acquis l'enchère"); </script>
+    FOOBAR;
+  }
+  if($autoenchere==2){
+    echo <<< FOOBAR
+    <script language="javascript"> alert("Votre offre a été prise en compte mais un autre utilisateur a proposé un prix supérieur en auto-enchère"); </script>
+    FOOBAR;
+  }
+
+
+
   ?>
 
 </body>
