@@ -19,7 +19,7 @@ if ($db_found) {
   $resultmdp = mysqli_query($db_handle, $sqlmdp);
 
   if (mysqli_num_rows($resultmdp) == 0) {
-    header('Location:connexion.php?error=1');
+    header('Location:index.php?error=1');
     exit();
   }
   else {
@@ -33,7 +33,7 @@ if ($db_found) {
     exit();
     }
     else {
-        header('Location:connexion.php?error=1');
+        header('Location:index.php?error=1');
         exit();
     }
   }
@@ -50,7 +50,7 @@ if ($db_found) {
   $resultmdp = mysqli_query($db_handle, $sqlmdp);
 
   if (mysqli_num_rows($resultmdp) == 0) {
-    header('Location:connexion.php?error=1');
+    header('Location:index.php?error=1');
     exit();
   }
   else {
@@ -64,7 +64,7 @@ if ($db_found) {
     exit();
     }
     else {
-        header('Location:connexion.php?error=1');
+        header('Location:index.php?error=1');
         exit();
     }
   }
@@ -81,7 +81,7 @@ if ($db_found) {
   $resultmdp = mysqli_query($db_handle, $sqlmdp);
 
   if (mysqli_num_rows($resultmdp) == 0) {
-    header('Location:connexion.php?error=1');
+    header('Location:index.php?error=1');
     exit();
   }
   else {
@@ -95,7 +95,7 @@ if ($db_found) {
     exit();
     }
     else {
-        header('Location:connexion.php?error=1');
+        header('Location:index.php?error=1');
         exit();
     }
   }
