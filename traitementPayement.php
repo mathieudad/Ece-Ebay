@@ -1,13 +1,6 @@
 <?php
 
 
-//$type = isset($_POST["Type"])? $_POST[""] : ""; 
-//$numeroCarte = isset($_POST[""])? $_POST[""] : ""; 
-//$nomCarte = isset($_POST[""])? $_POST[""] : ""; 
-//$dateExpiration = isset($_POST[""])? $_POST[""] : ""; 
-//$codeSecurite = isset($_POST[""])? $_POST[""] : "";
-
-
 
 function payement($prix,$idClient, $typeCarte, $numeroCarte, $nomCarte, $dateExpiration, $codeSecurite){
 		//identifier votre BDD
