@@ -192,13 +192,10 @@ FOOBAR;
 	echo <<< FOOBAR
 	 </p>
 	 <form action="traitementAjoutEnchere.php?idvente={$dataVente['IdVente']}" method="post">
-
-	   <div class="input-group mb-3">
-
-	     <input type="number" name="prix" class="form-control input_user" placeholder="Entrer ici votre prix" >
+	 <div class="input-group mb-3">
+		 <input type="number" name="prix" class="form-control input_user" placeholder="Entrer ici votre prix" >
 	   </div>
-
-	     <div class="d-flex  mt-3 login_container">
+		 <div class="d-flex  mt-3 login_container">
 			 <input type="submit" class="btn btn-outline-dark text-uppercase" value="Faire une offre d'enchere">
 	  </div>
 	 </form>
@@ -207,19 +204,14 @@ FOOBAR;
 	 <dt>Auto-Enchère Maximale</dt>
 	 </dl>
 	 <form action="traitementAjoutAutoEnchere.php?idvente={$dataVente['IdVente']}" method="post">
-
-	   <div class="input-group mb-3">
-
-	     <input type="number" name="prix" class="form-control input_user" placeholder="Entrer ici votre prix maximal pour l'auto-enchère" >
+	 <div class="input-group mb-3">
+		 <input type="number" name="prix" class="form-control input_user" placeholder="Entrer ici votre prix maximal pour l'auto-enchère" >
 	   </div>
-
-	     <div class="d-flex  mt-3 login_container">
+		 <div class="d-flex  mt-3 login_container">
 			 <input type="submit" class="btn btn-outline-dark text-uppercase" value="Faire une offre d'auto-enchere max">
 	  </div>
 	 </form>
-
-
-	 </article>
+ 	</article>
 	   </aside>
 	 </div>
 	 </div>
@@ -246,18 +238,14 @@ if($dataVente['TypeVente']=="Negociation"){
 	 <dt>Négociation</dt>
 	 </dl>
 	 <form action="traitementNouvelleNego.php?idvente={$dataVente['IdVente']}" method="post">
-
-		<div class="input-group mb-3">
-
-			<input type="number" name="prix" class="form-control input_user" placeholder="Entrez ici votre prix" >
+	 <div class="input-group mb-3">
+		<input type="number" name="prix" class="form-control input_user" placeholder="Entrez ici votre prix" >
 		</div>
-
-			<div class="d-flex  mt-3 login_container">
+		<div class="d-flex  mt-3 login_container">
 			<input type="submit" class="btn btn-outline-dark text-uppercase" value="Proposer une négociation">
 	 </div>
 	</form>
-
-	 </article>
+	</article>
 		 </aside>
 	 </div>
 	 </div>

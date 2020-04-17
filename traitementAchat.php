@@ -36,11 +36,8 @@ function afficheHistoClient($data){
 
 
 
-	echo "Prix d'achat : " . $data['CodePostal'] . '<br>';
-
 
 	echo <<< FOOBAR
-
 	<div class="border-card">
  <img src="{$data['Photo']}"class="img-thumbnail" width=100px height=100px>
 	<div class="content-wrapper">

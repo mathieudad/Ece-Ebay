@@ -31,8 +31,9 @@
 
 				  <form action="traitementLogin.php" method="post">
 
-						<?php  if($_GET['error']==1)
-
+						<?php
+							$error=isset($_GET["error"])? $_GET["error"] : "";
+						  if($error==1)
 
 						echo '<div class="title mb-2" style="color:red"> Votre identifiant ou votre mot de passe est incorrect  </div>';
 						else echo '<div class="title mb-2"> Veuillez entrer votre identifiant et votre mot de passe  </div>';
