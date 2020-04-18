@@ -1,9 +1,6 @@
 <?php
 
-
-//de plus il faudra verifier les infos de cb
-
-function AchatImmediat($idVente, $idClient){
+function AchatImmediat($idVente, $idClient,$typeCarte, $numeroCarte, $nomCarte, $dateExpiration, $codeSecurite){
 	//identifier votre BDD
 	$database = "ebayece";
 
@@ -12,7 +9,7 @@ function AchatImmediat($idVente, $idClient){
 	$db_found = mysqli_select_db($db_handle, $database);
 
 	if ($db_found) {
-		traitement($idClient,$idVente,$db_handle);
+		return traitement($idClient,$idVente,$db_handle,$typeCarte, $numeroCarte, $nomCarte, $dateExpiration, $codeSecurite);
 
 	}else{
 		echo "Database not found";
@@ -21,23 +18,40 @@ function AchatImmediat($idVente, $idClient){
 	mysqli_close($db_handle);
 }
 
-function traitement($idClient,$idVente,$db_handle){
+function traitement($idClient,$idVente,$db_handle,$typeCarte, $numeroCarte, $nomCarte, $dateExpiration, $codeSecurite){
 	$sqlVente = "SELECT * FROM Vente WHERE IdVente = $idVente;";
 	$resultVente = mysqli_query($db_handle, $sqlVente);
 	$dataVente = mysqli_fetch_assoc($resultVente);
+	include 'traitementPayement.php';
+	$prix = $dataVente['PrixAchatImmediat'];
+	$retourTraitement =paiement($prix,$idClient, $typeCarte, $numeroCarte, $nomCarte, $dateExpiration, $codeSecurite);
+	if($retourTraitement == 5){
+		addHistorique($dataVente,$idClient,$db_handle);
+		suppressionVente($dataVente,$db_handle);
+		return $retourTraitement;
+	}
+	else {
+		return $retourTraitement;
+	}
+}
+
+function addHistorique($dataVente,$idClient,$db_handle){
+	$idVente = $dataVente['IdVente'];
 	$idVendeur = $dataVente['IdVendeur'];
 	$nom = $dataVente['Nom'];
 	$photo = $dataVente['Photo'];
 	$categorie = $dataVente['Categorie'];
 	$prixDepart = $dataVente['PrixDepart'];
 	$prixAchat = $dataVente['PrixAchatImmediat'];
-	$descrition = $dataVente['Descrition'];
+	$description = $dataVente['Description'];
 
-	$sqlHisto = "INSERT INTO `historique` (`IdVente`, `IdClient`, `IdVendeur`, `Nom`, `Photo`, `Video`, `Categorie`, `PrixDepart`, `PrixAchat`, `TypeAchat`, Descrition) VALUES ('$idVente', '$idClient', '$idVendeur', '$nom', '$photo', NULL, '$categorie', '$prixDepart', '$prixAchat', 'Immediat','$descrition');";
+	$sqlHisto = "INSERT INTO `historique`(`IdVente`, `IdClient`, `IdVendeur`, `Nom`, `Photo`, `Video`, `Categorie`, `PrixDepart`, `PrixAchat`, `TypeAchat`, `Description`) VALUES  ('$idVente', '$idClient', '$idVendeur', '$nom', '$photo', NULL, '$categorie', '$prixDepart', '$prixAchat', 'Immediat', '$description')";
 	$res = mysqli_query($db_handle, $sqlHisto);
+}
 
+function suppressionVente($dataVente,$db_handle){
+	$idVente = $dataVente['IdVente'];
 	if($dataVente['TypeVente']=='Negociation'){
-
 		$sqlDeleteNego="DELETE FROM Negociation WHERE IdVente = $idVente";
 		mysqli_query($db_handle, $sqlDeleteNego);
 	}elseif($dataVente['TypeVente']=='Enchere'){
@@ -48,10 +62,26 @@ function traitement($idClient,$idVente,$db_handle){
 	}
 	$sqlDeleteEnchere="DELETE FROM Vente WHERE IdVente = $idVente";
 	mysqli_query($db_handle, $sqlDeleteEnchere);
-	echo "achat Immediat reussi";
 }
 
-AchatImmediat(6,3);
+function testRetour($retour){
+	if($retour==5){
+		header('Location: viewachats.php?result='.$retour);
+		exit;
+	}
+	else {
+		header('Location: paiementImmediat.php?idvente='.$_GET['idvente'].'&error='.$retour);
+		exit;
+	}
+}
 
+session_start();
+$type = isset($_POST["TypeCarte"])? $_POST["TypeCarte"] : "";
+$numeroCarte = isset($_POST["NumCarte"])? $_POST["NumCarte"] : "";
+$nomCarte = isset($_POST["NomCarte"])? $_POST["NomCarte"] : ""; 
+$dateExpiration = isset($_POST["DateExpCarte"])? $_POST["DateExpCarte"] : ""; 
+$codeSecurite = isset($_POST["CodeCarte"])? $_POST["CodeCarte"] : "";
+$retour = AchatImmediat($_GET['idvente'],$_SESSION['Id'],$type,$numeroCarte,$nomCarte,$dateExpiration,$codeSecurite);
+testRetour($retour);
 
 ?>

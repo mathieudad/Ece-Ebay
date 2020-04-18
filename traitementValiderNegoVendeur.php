@@ -32,6 +32,7 @@ function validerVendeur($idClient,$db_handle){
 	suppressionVente($dataVente,$db_handle);
 }
 
+
 function addaPayer($dataVente,$dataNego,$db_handle){
 	$idVente = $dataVente['IdVente'];
 	$idVendeur = $dataVente['IdVendeur'];

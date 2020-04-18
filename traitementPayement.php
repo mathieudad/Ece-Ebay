@@ -2,7 +2,7 @@
 
 
 
-function payement($prix,$idClient, $typeCarte, $numeroCarte, $nomCarte, $dateExpiration, $codeSecurite){
+function paiement($prix,$idClient, $typeCarte, $numeroCarte, $nomCarte, $dateExpiration, $codeSecurite){
 		//identifier votre BDD
 	$database = "ebayece";
 
@@ -11,24 +11,20 @@ function payement($prix,$idClient, $typeCarte, $numeroCarte, $nomCarte, $dateExp
 	$db_found = mysqli_select_db($db_handle, $database);
 
 	if ($db_found) {
-		$sqlClient = "SELECT *FROM client WHERE IdClient = $idClient;";
+		$sqlClient = "SELECT * FROM client WHERE IdClient = $idClient;";
 		$resultClient = mysqli_query($db_handle, $sqlClient);
 		$dataClient =  mysqli_fetch_assoc($resultClient);
 		if($typeCarte != $dataClient['TypeCarte']){
-			echo "typeCarte incorrect";
 			return 1;
 		}
 		elseif($nomCarte != $dataClient['NomCarte']){
-			echo "nomCarte incorrect";
 			return 2;
 		}
 		elseif($numeroCarte != $dataClient['NumCarte'] || $dateExpiration != $dataClient['DateExpCarte'] || $codeSecurite != $dataClient['CodeCarte']){
-			echo"infoperso incorrect";
 			return 3;
 		}
 
 		elseif ($prix > $dataClient['PorteMonnaie']) {
-			echo "fond insuffisant";
 			return 4;
 		}
 		else{
