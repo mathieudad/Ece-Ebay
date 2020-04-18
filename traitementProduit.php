@@ -3,7 +3,6 @@
 
 function affichageProduit($idVente, $type){
 	//identifier votre BDD
-	session_start();
 	$database = "ebayece";
 
 	//connectez-vous dans votre BDD

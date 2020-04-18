@@ -244,6 +244,16 @@ function affichageNegoCoteClient($dataNego,$dataVenteAssocie,$aQuiLeTour){
 		<input type="submit" class="btn btn-outline-dark text-uppercase" value="Negocier">
 		</div>
 		</form>
+		<form action="paiementNego.php?idvente={$dataNego['IdVente']}" method="post">
+		<div class="d-flex  mt-3 login_container">
+		<input type="submit" class="btn btn-outline-success text-uppercase" value="Accepter l'offre en cours">
+		</div>
+		</form>
+		<form action="paiementNego.php?idvente={$dataNego['IdVente']}&IdClient={$dataNego['IdClient']}" method="post">
+		<div class="d-flex  mt-3 login_container">
+		<input type="submit" class="btn btn-outline-danger text-uppercase" value="Refuser l'offre en cours">
+		</div>
+		</form>
 		</div>
 		</div>
 		</div>
