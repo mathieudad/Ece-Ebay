@@ -11,6 +11,7 @@ $database = "ebayece";
 //connectez-vous dans votre BDD
 $db_handle = mysqli_connect('localhost','root','');
 $db_found = mysqli_select_db($db_handle, $database);
+include 'traitementFinEnchere.php';
 
 if($type=="Client")
 {
@@ -29,6 +30,7 @@ if ($db_found) {
 
     $_SESSION['Type'] = $type;
     $_SESSION['Id'] =(int)$data['IdClient'];
+    finEnchere();
     header('Location:tout.php');
     exit();
     }
@@ -60,6 +62,7 @@ if ($db_found) {
 
     $_SESSION['Type'] = $type;
     $_SESSION['Id'] = (int)$data['IdVendeur'];
+    finEnchere();
     header('Location:tout.php');
     exit();
     }
@@ -88,9 +91,9 @@ if ($db_found) {
     $data=mysqli_fetch_assoc($resultmdp);
 
     if($mdp == $data['MotDePasse'])  {
-
     $_SESSION['Type'] = $type;
     $_SESSION['Id'] = (int)$data['IdAdmin'];
+    finEnchere();
     header('Location:tout.php');
     exit();
     }

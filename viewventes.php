@@ -70,6 +70,14 @@
     <?php include'traitementVendre.php';
     affichageVendre($_SESSION['Type'],$_SESSION['Id']); ?>
 
+     <?php $result = isset($_GET["result"])? $_GET["result"] : "";
+
+     if($result==1){
+       echo <<< FOOBAR
+       <script language="javascript"> alert("Votre vente a été enregistré"); </script>
+       FOOBAR;
+     }
+     ?>
   </div>
   </body>
   <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>

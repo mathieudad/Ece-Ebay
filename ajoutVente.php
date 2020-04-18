@@ -29,28 +29,35 @@
 
 
 
-				  <form action="traitementLogin.php" method="post">
-
+				  <form action="traitementAjoutVente.php" method="post" enctype="multipart/form-data">
+					<?php
+						$error=isset($_GET["error"])? $_GET["error"] : "";
+						if($error==1)
+							echo '<div class="title mb-2" style="color:red"> Vente Invalide </div>';
+						if($error==2)
+							echo '<div class="title mb-2" style="color:red"> Type de photo invalide </div>';
+						else echo '<div class="title mb-2"> Veuillez entrer une vente </div>';
+					?>
 						<div class="input-group mb-3">
 
-							<input type="text" name="pseudo" class="form-control input_user" placeholder="Nom du produit" >
+							<input type="text" name="Nom" class="form-control input_user" placeholder="Nom du produit" >
 						</div>
 						
 						<div class="input-group mb-1">
 							<div class="input-group-append">
-								<td> Catégorie <br></td>
+								<td > Catégorie <br></td>
 							</div>
 							<td class="ml-auto">
 
-              <select name="type" size="1">
-								<option>Ferraille ou Trésor</option>
-								<option>Bon pour le Musée</option>
-								<option>Accessoires VIP</option>
+              <select class = "ml-2" name="Categorie" size="1">
+								<option>Ferraille ou Tresor</option>
+								<option>Bon pour le Musee</option>
+								<option>Accessoire VIP</option>
               </select> </td>
 						</div>
 
 							<div class="input-group mb-3">
-							<input type="text" name="pseudo" class="form-control input_user" placeholder="Description" >
+							<input type="text" name="Description" class="form-control" placeholder="Description" >
 						</div>
 
 						<div class="input-group mb-1">
@@ -59,34 +66,23 @@
 							</div>
 							<td class="ml-auto">
 
-              <select name="type" size="1">
-								<option>Négociation</option>
-								<option>Achat immédiat</option>
+              <select class="ml-2" name="TypeVente" size="1">
+								<option>Negociation</option>
+								<option>Enchere</option>
               </select> </td>
 						</div>
 
 						<div class="input-group mb-3">
-							<input type="number" class="form-control input_user" placeholder="Prix de départ">
+							<input type="number" name="PrixDepart" class="form-control input_user" placeholder="Prix de départ">
 						</div>
 
 						<div class="input-group mb-3">
-							<input type="number" class="form-control input_user" placeholder="Prix de fin">
+							<input type="number" name="PrixAchatImmediat" class="form-control input_user" placeholder="Prix d'achat immediat">
 						</div>
 
 						<div class="input-group mb-3">
-							<input type="date" class="form-control input_user" placeholder="Date de début">
-						</div>
-
-						<div class="input-group mb-3">
-							<input type="date" class="form-control input_user" placeholder="Date de fin">
-						</div>
-
-						<div class="input-group mb-3">
-							<input type="date" class="form-control input_user" placeholder="Date de fin">
-						</div>
-
-						<div class="input-group mb-3">
-							<input type="date" class="form-control input_user" placeholder="Date de fin">
+							<label class = "mr-2"> Date de fin de la vente :</label>
+							<input type="date" name="DateFin" class="form-control input_user" placeholder="Date de fin">
 						</div>
 
 						<tr>     
@@ -97,13 +93,13 @@
 
 						<tr>     
 							<td>Image 2 produit</td>     
-							<td><input type="file" name="image"></td>    
+							<td><input type="file" name="image2"></td>    
 						</tr>
 						<br>
 
 						<tr>     
 							<td>Image 3 produit</td>     
-							<td><input type="file" name="image"></td>    
+							<td><input type="file" name="image3"></td>    
 						</tr>
 						<br>
 
@@ -113,14 +109,14 @@
 						</tr>   
 
 							<div class="d-flex justify-content-center mt-3 login_container">
-				 	    <input type="submit" class="btn btn-outline-dark" value="Se connecter">
+				 	    <input type="submit" class="btn btn-outline-dark" value="Ajouter Cette vente">
 				   </div>
 					</form>
 				</div>
 
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
-						Vous n'avez pas de compte? <a href="inscription.html" class="ml-2" style="color:grey">Créer un compte</a>
+						Vous avez changer d'avis <a href="viewventes.php" class="ml-2" style="color:grey">Retour à la page precedente</a>
 					</div>
 				</div>
 			</div>

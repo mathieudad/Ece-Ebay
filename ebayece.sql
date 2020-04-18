@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 17 avr. 2020 à 09:40
+-- Généré le :  sam. 18 avr. 2020 à 15:52
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -44,7 +44,6 @@ CREATE TABLE IF NOT EXISTS `admin` (
 INSERT INTO `admin` (`IdAdmin`, `E-mail`, `Pseudo`, `MotDePasse`) VALUES
 (1, 'mathieu.dadoun@edu.ece.fr', 'Mat', 'mathieu'),
 (2, 'nikola.todorovic200@gmail.com', 'Niko', 'nikola'),
-(3, 'nikola.todorovic200@gmail.com', 'Niko', 'nikola'),
 (4, 'jordan.kujundzic@edu.ece.com', 'Jord', 'jordan');
 
 -- --------------------------------------------------------
@@ -71,6 +70,13 @@ CREATE TABLE IF NOT EXISTS `apayer` (
   KEY `c12` (`IdVendeur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `apayer`
+--
+
+INSERT INTO `apayer` (`IdVente`, `IdClient`, `IdVendeur`, `Nom`, `PrixAchat`, `PrixDepart`, `Photo`, `Video`, `Description`, `TypeAchat`, `Categorie`) VALUES
+(1, 1, 1, 'Montre Bulova', 521, 500, 'PhotoItem/Montre.png', NULL, 'Une super montre jamais portée!', 'Enchere', 'Accessoire VIP');
+
 -- --------------------------------------------------------
 
 --
@@ -86,13 +92,6 @@ CREATE TABLE IF NOT EXISTS `autoenchere` (
   KEY `c9` (`IdClient`),
   KEY `c10` (`IdVente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `autoenchere`
---
-
-INSERT INTO `autoenchere` (`IdVente`, `IdClient`, `PrixMax`) VALUES
-(1, 1, 590);
 
 -- --------------------------------------------------------
 
@@ -128,9 +127,9 @@ CREATE TABLE IF NOT EXISTS `client` (
 --
 
 INSERT INTO `client` (`IdClient`, `Nom`, `Prenom`, `E-mail`, `Pseudo`, `MotDePasse`, `Adresse`, `CodePostal`, `Ville`, `Pays`, `Telephone`, `Panier`, `TypeCarte`, `NumCarte`, `NomCarte`, `DateExpCarte`, `CodeCarte`, `PorteMonnaie`) VALUES
-(1, 'Simpson', 'Bart', 'bartsimpson@edu.ece.fr', 'bart', 'bart', '123 route de bart', 13009, 'Springfield', 'USA', '0625032528', NULL, 'Visa', '1234123412341234', 'Bart Simpson', '12/2020', 1234, 0),
-(2, 'Simpson', 'Lisa', 'lisasimpson@edu.ece.fr', 'lisa', 'lisa', '123 route de bart', 13009, 'Springfield', 'USA', '0625032529', NULL, 'Visa', '3456345634563456', 'Lisa Simpson', '08/2020', 1414, 0),
-(3, 'Simpson', 'Maggie', 'maggiesimpson@edu.ece.fr', 'mag', 'maggie', '123 route de bart', 13009, 'Springfield', 'USA', '0625032529', '1', 'MasterCard', '1234567812345678', 'Maggie Simpson', '12/2022', 2341, 10000);
+(1, 'Simpson', 'Bart', 'bartsimpson@edu.ece.fr', 'bart', 'bart', '123 route de bart', 13009, 'Springfield', 'USA', '0625032528', NULL, 'Visa', '1234123412341234', 'Bart Simpson', '12/2020', 123, 25832),
+(2, 'Simpson', 'Lisa', 'lisasimpson@edu.ece.fr', 'lisa', 'lisa', '123 route de bart', 13009, 'Springfield', 'USA', '0625032529', NULL, 'Visa', '3456345634563456', 'Lisa Simpson', '08/2020', 141, 250),
+(3, 'Simpson', 'Maggie', 'maggiesimpson@edu.ece.fr', 'mag', 'maggie', '123 route de bart', 13009, 'Springfield', 'USA', '0625032529', '1', 'MasterCard', '1234567812345678', 'Maggie Simpson', '12/2022', 234, 10000);
 
 -- --------------------------------------------------------
 
@@ -148,13 +147,6 @@ CREATE TABLE IF NOT EXISTS `enchere` (
   KEY `c7` (`IdVente`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Déchargement des données de la table `enchere`
---
-
-INSERT INTO `enchere` (`IdVente`, `IdClient`, `PrixActuel`) VALUES
-(1, 1, 521);
-
 -- --------------------------------------------------------
 
 --
@@ -169,10 +161,10 @@ CREATE TABLE IF NOT EXISTS `historique` (
   `Nom` varchar(50) NOT NULL,
   `Photo` varchar(500) NOT NULL,
   `Video` varchar(500) DEFAULT NULL,
-  `Categorie` enum('Ferraille ou Trésor','Bon pour le Musée','Accessoir VIP') NOT NULL,
+  `Categorie` enum('Ferraille ou Tresor','Bon pour le Musee','Accessoire VIP') NOT NULL,
   `PrixDepart` int(5) NOT NULL,
   `PrixAchat` int(6) NOT NULL,
-  `TypeAchat` enum('Immédiat','Enchère','Négociation') NOT NULL,
+  `TypeAchat` enum('Immediat','Enchere','Negociation') NOT NULL,
   `Description` varchar(500) NOT NULL,
   PRIMARY KEY (`IdVente`,`IdClient`,`IdVendeur`),
   KEY `c5` (`IdClient`),
@@ -184,8 +176,10 @@ CREATE TABLE IF NOT EXISTS `historique` (
 --
 
 INSERT INTO `historique` (`IdVente`, `IdClient`, `IdVendeur`, `Nom`, `Photo`, `Video`, `Categorie`, `PrixDepart`, `PrixAchat`, `TypeAchat`, `Description`) VALUES
-(2, 2, 2, 'Bureau en Bois', 'PhotoItem/Bureau.png', NULL, 'Ferraille ou Trésor', 50, 30, 'Négociation', 'hhfgdtfses'),
-(6, 3, 1, 'Statue Bronze', 'PhotoItem/Statue.png', NULL, 'Bon pour le Musée', 1000, 10000, 'Immédiat', 'okrobefjze');
+(2, 2, 2, 'Bureau en Bois', 'PhotoItem/Bureau.png', NULL, 'Ferraille ou Tresor', 50, 30, 'Negociation', 'hhfgdtfses'),
+(6, 3, 1, 'Statue Bronze', 'PhotoItem/Statue.png', NULL, 'Bon pour le Musee', 1000, 10000, 'Immediat', 'okrobefjze'),
+(7, 2, 1, 'Piece japonaise', 'PhotoItem/Piece2.png', NULL, 'Ferraille ou Tresor', 50, 300, 'Immediat', 'Une belle piece japonaise'),
+(17, 2, 1, 'Jsp', 'PhotoItem/boitie.png', NULL, 'Bon pour le Musee', 50, 140, 'Negociation', 'jiervizejrv');
 
 -- --------------------------------------------------------
 
@@ -255,19 +249,14 @@ CREATE TABLE IF NOT EXISTS `vente` (
   `DateFin` date NOT NULL,
   PRIMARY KEY (`IdVente`),
   KEY `c1` (`IdVendeur`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `vente`
 --
 
 INSERT INTO `vente` (`IdVente`, `IdVendeur`, `Nom`, `Photo`, `Video`, `Description`, `Categorie`, `PrixDepart`, `PrixAchatImmediat`, `TypeVente`, `DateAjout`, `DateFin`) VALUES
-(1, 1, 'Montre Bulova', 'PhotoItem/Montre.png', NULL, 'Une super montre jamais portée!', 'Accessoire VIP', 500, 2000, 'Enchere', '2020-04-10', '2020-04-17'),
-(4, 2, 'Piece d\'époque', 'PhotoItem/Piece.png', NULL, 'Une piece datant de 1844', 'Ferraille ou Tresor', 2, 20, 'Enchere', '2020-04-12', '2020-04-27'),
-(7, 1, 'Piece japonaise', 'PhotoItem/Piece2.png', NULL, 'Une belle piece japonaise', 'Ferraille ou Tresor', 50, 300, 'Enchere', '2020-04-16', '2020-04-23'),
-(8, 2, 'Estampe Japonaise', 'PhotoItem/Estampe.png', NULL, 'Un tableau de maitre', 'Bon pour le Musee', 80000, 400000, 'Negociation', '2020-04-14', '2020-05-07'),
 (9, 2, 'Bijou', 'PhotoItem/Bijou.png', NULL, 'Un bijou des plus rares', 'Accessoire VIP', 1000, 8000, 'Enchere', '2020-04-15', '2020-04-29'),
-(10, 1, 'Je ne sais pas ce que c\'est', 'PhotoItem/Boitie.png', NULL, 'Je ne sais pas ce que c\'est la qualité de la photo est mediocre, a vous d\'imaginer', 'Ferraille ou Tresor', 90, 400, 'Negociation', '2020-04-09', '2020-04-30'),
 (11, 1, 'Rolex Hulk', 'PhotoItem/Hulk.png', NULL, 'Une montre rolex fond vert, tres peu portée', 'Accessoire VIP', 12000, 17000, 'Negociation', '2020-04-15', '2020-05-21'),
 (12, 2, 'Rolex Daytona', 'PhotoItem/Daytona.png', NULL, 'Ancien model de rolex Daytona fond blanc 2002', 'Ferraille ou Tresor', 19000, 26000, 'Enchere', '2020-04-15', '2020-05-07'),
 (13, 1, 'Montre Pepsi', 'PhotoItem/Pepsi.png', NULL, 'Une gmt master 2 pepsi 2015 ', 'Accessoire VIP', 16000, 21000, 'Negociation', '2020-04-15', '2020-04-30'),
