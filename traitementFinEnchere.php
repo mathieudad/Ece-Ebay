@@ -75,4 +75,5 @@ function suppressionVente($dataVente,$db_handle){
 	mysqli_query($db_handle, $sqlDeleteEnchere);
 }
 
+FinEnchere();
 ?>

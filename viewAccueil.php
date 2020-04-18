@@ -1,5 +1,6 @@
+<?php session_start(); ?>
 <!doctype html>
-<html lang="en">
+<html>
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -7,7 +8,7 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link href="styles.css" rel="stylesheet" type="text/css">
+  <link href="styles1.css" rel="stylesheet" type="text/css">
   <title>Ebay Ece</title>
 </head>
 <body >
@@ -16,14 +17,14 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
           Catégories
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="feraille.php">Ferailles & Trésors</a>
+          <a class="dropdown-item" href="feraille.php">Ferailles ou Trésors</a>
           <a class="dropdown-item" href="musee.php">Bon pour musée</a>
           <a class="dropdown-item" href="vip.php">Accesoires VIP</a>
-             <div class="dropdown-divider"></div>
+          <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="tout.php">Voir tous les articles</a>
         </div>
       </li>
@@ -55,34 +56,30 @@
     </ul>
   </nav>
 
-  <section class="jumbotron text-center" style=" background-image: url(tout.jpg)" >
+  <section class="jumbotron text-center" style="height:500px;background-image:url(musee.jpg);" >
     <div class="container">
-      <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">TOUS LES ARTICLES</h1>
+      <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">BIENVENUE SUR ECEBAY</h1>
 
     </div>
   </section>
+  <div class=container>
+    <h4 style="font-weight:bold;color:black">Vos Articles à Payer</h4>
 
-  <div class="container py-5">
+  <hr>
+  <?php
 
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <!-- List group-->
-        <ul class="list-group shadow">
-          <!-- list group item-->
-          <?php
+        include 'traitementAffichageAPayer.php';
+        aPayer($_SESSION['Id'],$_SESSION['Type']);
+  ?>
 
-          include 'traitementCategories.php';
-            affichageCategorie("Toutes Categories");
-            ?>
+</body>
 
-          </ul> <!-- End -->
-        </div>
-      </div>
-    </div>
+<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script id="rendered-js"> </script>
 
-  </body>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-  </html>
+</html>

@@ -33,7 +33,7 @@ function suppressionPanier($idClient, $idVente){
 }
 
 function suppressionString($string,$idVente){
-	
+
 	if($string == $idVente){
 		$string = 'null';
 		return $string;
@@ -42,10 +42,10 @@ function suppressionString($string,$idVente){
 		$test = $idVente.'';
 		if(stripos($string ,$test)==0){
 			$remplace = $idVente.',';
-			$string = str_replace($remplace,' ', $string);
+			$string = str_replace($remplace,'', $string);
 		}else{
 			$remplace = ','.$idVente;
-			$string = str_replace($remplace,' ', $string);
+			$string = str_replace($remplace,'', $string);
 		}
 		return $string;
 	}

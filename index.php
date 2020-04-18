@@ -56,7 +56,7 @@
 							</div>
 							<td class="ml-auto">
 
-								<select class="form-control" name="type" size="1">
+								<select class="form-control"name="type" size="1">
 									<option>Client</option>
 									<option>Admin</option>
 									<option>Vendeur</option>

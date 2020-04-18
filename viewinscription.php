@@ -16,6 +16,7 @@
             <img src="ECEBAY.png" class="brand_logo" alt="Logo">
           </div>
         </div>
+        
         <?php
         $error=isset($_GET["error"])? $_GET["error"] : "";
         if($error==1)

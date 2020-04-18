@@ -71,12 +71,12 @@
 								<input type="submit" class="btn btn-outline-dark" value="Payer">
 							</div>
 						</form>
-					</div>	
+					</div>
 
 					<div class="mt-4">
 						<div class="d-flex justify-content-center links">
-							Vous Souhaitez annuler le paiement ? <a href="tout.php" class="ml-2" style="color:grey">Retour sur le site</a>
-						</div>	
+							Vous Souhaitez annuler le paiement ? <a href="viewAccueil.php" class="ml-2" style="color:grey">Retour sur le site</a>
+						</div>
 
 				</div>
 			</div>

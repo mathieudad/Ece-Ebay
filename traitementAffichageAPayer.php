@@ -35,7 +35,7 @@ function traitementAffichageClient($id,$db_handle)
 
 function affichageAPayer($dataAPayer){
 		echo <<< FOOBAR
-		<div class="border-card">	
+		<div class="border-card">
 		<img src="{$dataAPayer['Photo']}"class="img-thumbnail" width=100px height=100px>
 		<div class="content-wrapper">
 		<div class="label-group fixed">
@@ -49,19 +49,18 @@ function affichageAPayer($dataAPayer){
 		</div>
 		<div class="min-gap"></div>
 		<div class="label-group">
-		<p class="caption">Prix A Payer </p>
+		<p class="caption">Prix à payer </p>
 		<p class="title">{$dataAPayer['PrixAchat']}€</p>
 		</div>
-		</form>
+		<div class="min-gap"></div>
 		<form action="paiementAPayer.php?idvente={$dataAPayer['IdVente']}" method="post">
-		<div class="d-flex  mt-3 login_container">
-		<input type="submit" class="btn btn-outline-success text-uppercase" value="Payer L'enchere">
+		<input type="submit" class="btn btn-outline-success text-uppercase" value="Procéder au paiement">
+		</form>
 		</div>
-		</form>		
 		</div>
-		FOOBAR;	
+		FOOBAR;
 }
 
-aPayer(1,'Client');
+
 
 ?>

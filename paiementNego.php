@@ -5,6 +5,7 @@
 	<title>Page de paiement</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -71,12 +72,12 @@
 								<input type="submit" class="btn btn-outline-dark" value="Payer">
 							</div>
 						</form>
-					</div>	
+					</div>
 
 					<div class="mt-4">
 						<div class="d-flex justify-content-center links">
 							Vous Souhaitez annuler le paiement ? <a href="viewachats.php" class="ml-2" style="color:grey">Retour sur le site</a>
-						</div>	
+						</div>
 
 				</div>
 			</div>

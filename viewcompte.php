@@ -1,4 +1,5 @@
 <?php session_start();?>
+<!doctype html>
 <html lang="en">
 <head>
   <!-- Required meta tags -->
@@ -12,7 +13,7 @@
 </head>
 <body >
   <nav class="navbar navbar-expand-lg navbar-light align-items-end"  style="font-size:150%;font-weight:bold">
-    <a class="navbar-brand" href="accueil.html"> <img src="logo5.png"  alt=""></a>
+    <a class="navbar-brand" href="viewAccueil.php"> <img src="logo5.png"  alt=""></a>
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item dropdown">
@@ -32,7 +33,7 @@
 
     <ul class="navbar-nav ml-auto align-items-end" >
       <li class="nav-item">
-        <a class="nav-link" style="color:black" href="viewachats.php">Achat</a>
+        <a class="nav-link" style="color:black" href="viewachats.php">Achats & Négociations</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="viewventes.php">Vendre mon produit</a>
@@ -48,7 +49,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" style="color:black" href="#">Admin</a>
+        <a class="nav-link" style="color:black" href="viewAdmin.php">Admin</a>
       </li>
 
 
