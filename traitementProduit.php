@@ -155,7 +155,7 @@ function affichageVenteClient($dataVente,$db_handle){
 	<span class="currency">EUR €</span><span class="num">{$dataVente['PrixAchatImmediat']} </span>
 	</span>
 	</p>
-	<a href="traitementAjoutPanier.php?idvente={$dataVente['IdVente']}" class="btn btn-lg btn-outline-dark text-uppercase"> <i class="fas fa-shopping-cart"></i> Ajouter au panier </a> <a href="#" class="btn btn-lg btn-outline-danger text-uppercase"> <i class="fas fa-shopping-cart"></i> Achat Immediat</a>
+	<a href="traitementAjoutPanier.php?idvente={$dataVente['IdVente']}" class="btn btn-lg btn-outline-dark text-uppercase"> <i class="fas fa-shopping-cart"></i> Ajouter au panier </a> <a href="paiementImmediat.php?idvente={$dataVente['IdVente']}" class="btn btn-lg btn-outline-danger text-uppercase"> <i class="fas fa-shopping-cart"></i> Achat Immediat</a>
 	FOOBAR;
 
 	if($dataVente['TypeVente']=="Enchere")

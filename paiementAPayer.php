@@ -21,7 +21,7 @@
 				<br>
 				<div class="d-flex justify-content-center form_container">
 
-					<form  action="traitementValiderNegoClient.php?idvente=<?php echo $_GET['idvente']; ?>" method="post">
+					<form  action="traitementPaiementAPayer.php?idvente=<?php echo $_GET['idvente']; ?>" method="post">
 						<?php
 						$error=isset($_GET["error"])? $_GET["error"] : "";
 						if($error==1)
@@ -75,7 +75,7 @@
 
 					<div class="mt-4">
 						<div class="d-flex justify-content-center links">
-							Vous Souhaitez annuler le paiement ? <a href="viewachats.php" class="ml-2" style="color:grey">Retour sur le site</a>
+							Vous Souhaitez annuler le paiement ? <a href="tout.php" class="ml-2" style="color:grey">Retour sur le site</a>
 						</div>	
 
 				</div>
