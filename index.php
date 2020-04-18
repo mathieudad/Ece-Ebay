@@ -36,6 +36,9 @@
 						if($error==1)
 
 							echo '<div class="title mb-2" style="color:red"> Votre identifiant ou votre mot de passe est incorrect  </div>';
+							elseif ($error==2) {
+								echo '<div class="title mb-2"> Connectez-vous maintenant grâce à votre nouvel identifiant </div>';
+							}
 						else echo '<div class="title mb-2"> Veuillez entrer votre identifiant et votre mot de passe  </div>';
 						?>
 
@@ -53,7 +56,7 @@
 							</div>
 							<td class="ml-auto">
 
-								<select name="type" size="1">
+								<select class="form-control" name="type" size="1">
 									<option>Client</option>
 									<option>Admin</option>
 									<option>Vendeur</option>
@@ -68,7 +71,7 @@
 
 					<div class="mt-4">
 						<div class="d-flex justify-content-center links">
-							Vous n'avez pas de compte? <a href="inscription.html" class="ml-2" style="color:grey">Créer un compte</a>
+							Vous n'avez pas de compte? <a href="viewInscription.php" class="ml-2" style="color:grey">Créer un compte</a>
 						</div>
 
 
