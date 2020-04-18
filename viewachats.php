@@ -86,7 +86,11 @@
        echo <<< FOOBAR
        <script language="javascript"> alert("Bravo, l'offre a été ajoutée, attendez maintenant la réponse de l'autre partie"); </script>
        FOOBAR;
-     } ?>
+     }
+     if($result==5){
+       echo <<< FOOBAR
+       <script language="javascript"> alert("Bravo, Vous avez acquis l'objet"); </script>
+       FOOBAR; ?>
 </div>
 
 

@@ -16,26 +16,26 @@ function payement($prix,$idClient, $typeCarte, $numeroCarte, $nomCarte, $dateExp
 		$dataClient =  mysqli_fetch_assoc($resultClient);
 		if($typeCarte != $dataClient['TypeCarte']){
 			echo "typeCarte incorrect";
-			return 0;
+			return 1;
 		}
 		elseif($nomCarte != $dataClient['NomCarte']){
 			echo "nomCarte incorrect";
-			return 1;;
+			return 2;
 		}
 		elseif($numeroCarte != $dataClient['NumCarte'] || $dateExpiration != $dataClient['DateExpCarte'] || $codeSecurite != $dataClient['CodeCarte']){
 			echo"infoperso incorrect";
-			return 2;;
+			return 3;
 		}
 
 		elseif ($prix > $dataClient['PorteMonnaie']) {
 			echo "fond insuffisant";
-			return 3;
+			return 4;
 		}
 		else{
 			$newPorteMonnaie = $dataClient['PorteMonnaie'] - $prix;
 			$sqlModifCli = "UPDATE client SET PorteMonnaie= $newPorteMonnaie WHERE client.IdClient = $idClient ";
 			$res = mysqli_query($db_handle, $sqlModifCli);
-		 	return 4;
+		 	return 5;
 		}
 	}else {
 		echo "Database not found";

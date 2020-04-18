@@ -1,13 +1,6 @@
 <?php
 
-
-//$type = isset($_POST["Type"])? $_POST[""] : ""; 
-//$numeroCarte = isset($_POST[""])? $_POST[""] : ""; 
-//$nomCarte = isset($_POST[""])? $_POST[""] : ""; 
-//$dateExpiration = isset($_POST[""])? $_POST[""] : ""; 
-//$codeSecurite = isset($_POST[""])? $_POST[""] : "";
-
-function validerNegoClient($idClient,$typeCarte, $numeroCarte, $nomCarte, $dateExpiration, $codeSecurite){
+function validerNegoClient($idClient, $idVente, $typeCarte, $numeroCarte, $nomCarte, $dateExpiration, $codeSecurite){
 	//identifier votre BDD
 	$database = "ebayece";
 
@@ -16,7 +9,7 @@ function validerNegoClient($idClient,$typeCarte, $numeroCarte, $nomCarte, $dateE
 	$db_found = mysqli_select_db($db_handle, $database);
 
 	if ($db_found) {
-		valider($idClient,$db_handle,$typeCarte, $numeroCarte, $nomCarte, $dateExpiration, $codeSecurite);
+		valider($idClient, $idVente, $db_handle,$typeCarte, $numeroCarte, $nomCarte, $dateExpiration, $codeSecurite);
 	}else {
 		echo "Database not found";
 	}
@@ -25,21 +18,21 @@ function validerNegoClient($idClient,$typeCarte, $numeroCarte, $nomCarte, $dateE
 }
 
 
-function validerClient($idClient,$db_handle,$typeCarte, $numeroCarte, $nomCarte, $dateExpiration, $codeSecurite){
+function validerClient($idClient,$idVente,$db_handle,$typeCarte, $numeroCarte, $nomCarte, $dateExpiration, $codeSecurite){
 	include 'traitementPayement.php';
-	$sqlNego ="SELECT * FROM Negociation Where IdClient = $idClient;";
+	$sqlNego ="SELECT * FROM Negociation Where IdClient = $idClient AND IdVente = $idVente;";
 	$resultNego = mysqli_query($db_handle, $sqlNego);
 	$dataNego =  mysqli_fetch_assoc($resultNego);	
 	$retourTraitement = traitementPayement($dataNego['PrixNego'],$idClient,$typeCarte, $numeroCarte, $nomCarte, $dateExpiration, $codeSecurite);
-	if($retourTraitement==4){
-		$idVente = $dataNego['IdVente'];
+	if($retourTraitement==5){
 		$sqlVente = "SELECT * FROM Vente Where IdVente = $idVente;";
 		$resultVente = mysqli_query($db_handle, $sqlVente);
 		$dataVente =  mysqli_fetch_assoc($resultVente);
 		addHistorique($dataVente,$dataNego,$db_handle);
 		suppressionVente($dataVente,$db_handle);
+		return $retourTraitement;
 	else{
-			echo "soucis";
+			return $retourTraitement;
 			//reafficher la page de payement avec l'erreur associé 
 		}
 	}
@@ -78,6 +71,17 @@ function suppressionVente($dataVente,$db_handle){
 }
 
 
+session_start();
+$type = isset($_POST["TypeCarte"])? $_POST["TypeCarte"] : ""; 
+$numeroCarte = isset($_POST["NumCarte"])? $_POST["NumCarte"] : ""; 
+$nomCarte = isset($_POST["NomCarte"])? $_POST["NomCarte"] : ""; 
+$dateExpiration = isset($_POST["DateExpCarte"])? $_POST["DateExpCarte"] : ""; 
+$codeSecurite = isset($_POST["CodeCarte"])? $_POST["CodeCarte"] : "";
 
-
+$retour = validerNegoClient($_SESSION['Id'],$_GET['IdVente'],$type,$numeroCarte,$nomCarte,$dateExpiration,$codeSecurite);
+if($retour == 5)
+	header('Location: viewachats.php?id='.$_GET['&result='].$retour);
+else 
+	header('Location: paiement.php?id='.$_GET['idvente'].$_GET['&error='.$retour);
+exit;
 ?>
