@@ -92,7 +92,18 @@
        echo <<< FOOBAR
        <script language="javascript"> alert("Bravo, vous avez acquis l'objet"); </script>
        FOOBAR;
-     } ?>
+     }
+
+     if($result==4){
+       echo <<< FOOBAR
+       <script language="javascript"> alert("Vous avez accepté la négociation, restez en attente du paiement du client"); </script>
+       FOOBAR;
+     }
+     if($result==6){
+       echo <<< FOOBAR
+       <script language="javascript"> alert("Vous avez refusé la négociation, cette négociation n'apparaitra plus chez le client"); </script>
+       FOOBAR;
+     }?>
 </div>
 
   </body>

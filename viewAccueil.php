@@ -12,7 +12,7 @@
   <title>Ebay Ece</title>
 </head>
 <body >
-  <nav class="navbar navbar-expand-lg navbar-light align-items-end"  style="font-size:150%;font-weight:bold">
+  <nav class="navbar navbar-expand-lg navbar-light align-items-end"  style="font-size:130%;font-weight:bold">
     <a class="navbar-brand" href="viewAccueil.php"> <img src="logo5.png"  alt=""></a>
     <ul class="navbar-nav mr-auto">
 

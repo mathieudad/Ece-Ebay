@@ -1,7 +1,7 @@
 
 <?php
 
-function validerNegoVendeur($idClient){
+function validerNegoVendeur($idClient,$idVente){
 	//identifier votre BDD
 	$database = "ebayece";
 
@@ -10,7 +10,7 @@ function validerNegoVendeur($idClient){
 	$db_found = mysqli_select_db($db_handle, $database);
 
 	if ($db_found) {
-		validerNegoVendeur($idClient,$db_handle);
+		validerVendeur($idClient,$db_handle,$idVente);
 	}else {
 		echo "Database not found";
 	}
@@ -20,11 +20,11 @@ function validerNegoVendeur($idClient){
 
 
 
-function validerVendeur($idClient,$db_handle){
-	$sqlNego ="SELECT * FROM Negociation Where IdClient = $idClient;";
+function validerVendeur($idClient,$db_handle,$idVente){
+
+	$sqlNego ="SELECT * FROM Negociation Where IdClient = $idClient AND IdVente = $idVente;";
 	$resultNego = mysqli_query($db_handle, $sqlNego);
 	$dataNego =  mysqli_fetch_assoc($resultNego);
-	$idVente = $dataNego['IdVente'];
 	$sqlVente = "SELECT * FROM Vente Where IdVente = $idVente;";
 	$resultVente = mysqli_query($db_handle, $sqlVente);
 	$dataVente =  mysqli_fetch_assoc($resultVente);
@@ -64,5 +64,8 @@ function suppressionVente($dataVente,$db_handle){
 	mysqli_query($db_handle, $sqlDeleteEnchere);
 }
 
+validerNegoVendeur($_GET['IdClient'],$_GET['idvente']);
+header('Location: viewachats.php?result=4');
+exit;
 
 ?>

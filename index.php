@@ -12,24 +12,25 @@
 
 
 
-<body>
+<body style=" background-image: url(musee.jpg);background-repeat: no-repeat;background-position: center;background-color: black;" >
 
 
-	<div class="container align-content-center">
+	<div class="container align-content-center ">
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
 					<div class="brand_logo_container mt-5">
-						<img src="ECEBAY.png" class="brand_logo" alt="Logo">
+						<img src="logo5.png" class="brand_logo" alt="Logo">
 					</div>
 				</div>
 				<br>
 				<br>
-				<div class="d-flex justify-content-center form_container">
+
+				<div class="card justify-content-center p-3" style="background-color:rgba(255,255,255,0.9)">
 
 
 
-					<form action="traitementLogin.php" method="post">
+					<form action="traitementLogin.php" method="post" >
 
 						<?php
 						$error=isset($_GET["error"])? $_GET["error"] : "";
@@ -67,13 +68,13 @@
 								<input type="submit" class="btn btn-outline-dark" value="Se connecter">
 							</div>
 						</form>
-					</div>
+
 
 					<div class="mt-4">
 						<div class="d-flex justify-content-center links">
 							Vous n'avez pas de compte? <a href="viewInscription.php" class="ml-2" style="color:grey">Créer un compte</a>
 						</div>
-
+</div>
 
 					</div>
 				</div>
