@@ -1,13 +1,8 @@
 <?php
 
 
-<<<<<<< HEAD
 function inscrireVendeur($nom,$prenom,$tel,$email,$pays,$identifiant,$mdp){
 	if(isset($_FILES["image"])){ 
-=======
-function inscrireVendeur($nom,$tel,$prenom,$email,$pays,$identifiant,$mdp){
-	if(isset($_FILES["image"])){
->>>>>>> niko
 		$dossier = 'PhotoProfil/';
 		$fichier = basename($_FILES['image']['name']);
 		$photo = $dossier.$fichier;
@@ -22,15 +17,9 @@ function inscrireVendeur($nom,$tel,$prenom,$email,$pays,$identifiant,$mdp){
 	$db_handle = mysqli_connect('localhost','root','');
 	$db_found = mysqli_select_db($db_handle, $database);
 
-<<<<<<< HEAD
-	$sqlVendeur = "INSERT INTO `vendeur` (`IdVendeur`, `E-mail`, `Pseudo`, `MotDePasse`, `Photo`, `ImageFond`, `Nom`, Prenom, `Pays`, `Telephone`, `PorteMonnaie`) VALUES (NULL, '$email', '$identifiant', '$mdp', '$photo', '$photo', '$nom', $prenom, '$pays', '$tel', '0')";
-=======
-	$sqlVendeur = "INSERT INTO vendeur ('IdVendeur',`E-mail`, `Pseudo`, `MotDePasse`, `Photo`, `ImageFond`, `Nom`,'Prenom', `Pays`, `Telephone`, `PorteMonnaie`)
-	 VALUES  (NULL,'$email', '$identifiant', '$mdp', '$photo', '$photo', '$nom','$prenom','$pays', '$tel', 0)";
->>>>>>> niko
+	$sqlVendeur = "INSERT INTO `vendeur` (`IdVendeur`, `E-mail`, `Pseudo`, `MotDePasse`, `Photo`, `ImageFond`, `Nom`, Prenom, `Pays`, `Telephone`, `PorteMonnaie`) VALUES (NULL, '$email', '$identifiant', '$mdp', '$photo', '$photo', '$nom', '$prenom', '$pays', '$tel', '0')";
 	$res = mysqli_query($db_handle, $sqlVendeur);
 
-,
 	mysqli_close($db_handle);
 
 }
@@ -44,22 +33,13 @@ $pays = isset($_POST["pays"])? $_POST["pays"] : "";
 $identifiant= isset($_POST["identifiant"])? $_POST["identifiant"] : "";
 $mdp = isset($_POST["mdp"])? $_POST["mdp"] : "";
 
-<<<<<<< HEAD
 if($nom=="" || $prenom =="" || $tel=="" || $email=="" || $pays=="" || $identifiant=="" || $mdp==""){
 	header('Location: viewInscriptionVendeur.php?error=1');
-=======
-if($nom=="" || $prenom=="" ||  $tel=="" || $email=="" || $pays=="" || $identifiant=="" || $mdp==""){
-	header('Location: viewAdmin.php?error=1');
->>>>>>> niko
 	exit;
 
 }
 else{
-<<<<<<< HEAD
 	inscrireVendeur($nom,$prenom, $tel,$email,$pays,$identifiant,$mdp);
-=======
-	inscrireVendeur($nom,$tel,$prenom,$email,$pays,$identifiant,$mdp);
->>>>>>> niko
 	header('Location: viewAdmin.php?result=1');
 	exit;
 }
