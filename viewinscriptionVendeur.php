@@ -12,9 +12,6 @@
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
-					<div class="brand_logo_container mt-5">
-						<img src="ECEBAY.png" class="brand_logo" alt="Logo">
-					</div>
 				</div>
 
 				<?php
@@ -277,10 +274,10 @@
 					</div>
 
 					<br>
-					<tr>     
-						<td>Photo de Profil</td>     
-						<td><input type="file" name="image"></td>    
-					</tr>   
+					<tr>
+						<td>Photo de Profil</td>
+						<td><input type="file" name="image"></td>
+					</tr>
 					<br>
 
 					<hr>
