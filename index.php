@@ -65,7 +65,7 @@
 							</div>
 
 							<div class="d-flex justify-content-center mt-3 login_container">
-								<input type="submit" class="btn btn-outline-dark" value="Se connecter">
+								<input type="submit" class="btn btn-outline-dark" style="text-transform:uppercase" value="Se connecter">
 							</div>
 						</form>
 

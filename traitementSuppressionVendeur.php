@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function suppressionVendeur($idVendeur){
 	//identifier votre BDD
@@ -14,7 +14,7 @@ function suppressionVendeur($idVendeur){
 		while($dataVente= mysqli_fetch_assoc($resultVente)){
 			suppressionVente($dataVente,$db_handle);
 		}
-		$sqlDelete = "DELETE FROM vendeur WHERE IdVendeur=$idVendeur;"; 
+		$sqlDelete = "DELETE FROM vendeur WHERE IdVendeur=$idVendeur;";
 		mysqli_query($db_handle, $sqlDelete);
 	}else {
 		echo "Database not found";
@@ -39,6 +39,7 @@ function suppressionVente($dataVente,$db_handle){
 	mysqli_query($db_handle, $sqlDeleteEnchere);
 }
 
-suppressionVendeur(3);
-
+suppressionVendeur($_GET['idvendeur']);
+header('Location: viewAdmin.php?supress=1');
+exit;
 ?>
