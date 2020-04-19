@@ -16,6 +16,8 @@ function panier($type, $id){
 	if ($db_found) {
 			$sqlPanier = "SELECT Panier FROM Client WHERE IdClient = $id;";
 			$resultPanier = mysqli_query($db_handle, $sqlPanier);
+			if(mysqli_num_rows($resultPanier) == 0)
+				return;
 			$data = mysqli_fetch_assoc($resultPanier);
 			affichePanierDuClient($data, $db_handle);
 	}else {

@@ -12,7 +12,7 @@
   <title>Ebay Ece</title>
 </head>
 <body >
-  <nav class="navbar navbar-expand-lg navbar-light align-items-end"  style="font-size:150%;font-weight:bold">
+  <nav class="navbar navbar-expand-lg navbar-light align-items-end"  style="font-size:130%;font-weight:bold">
     <a class="navbar-brand" href="viewAccueil.php"> <img src="logo5.png"  alt=""></a>
     <ul class="navbar-nav mr-auto">
 
@@ -44,14 +44,18 @@
       </li>
       <li class="nav-item">
         <a class="navbar-brand" href="viewpanier.php">
-          <img src="panier.png" width="50" height="50" class="d-inline-block align-top" alt="">
+          <img src="panier.png" width="40" height="40" class="d-inline-block align-top" alt="">
 
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" style="color:black" href="viewAdmin.php">Admin</a>
       </li>
-
+      <li class="nav-item">
+        <a class="nav-link" style="color:black" href="index.php">
+           <img src="logout.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        </a>
+      </li>
 
     </ul>
   </nav>

@@ -42,7 +42,7 @@
 
 							<input type="text" name="Nom" class="form-control input_user" placeholder="Nom du produit" >
 						</div>
-						
+
 						<div class="input-group mb-1">
 							<div class="input-group-append">
 								<td > Catégorie <br></td>
@@ -85,28 +85,28 @@
 							<input type="date" name="DateFin" class="form-control input_user" placeholder="Date de fin">
 						</div>
 
-						<tr>     
-							<td>Image 1 produit</td>     
-							<td><input type="file" name="image"></td>    
-						</tr>   
-						<br>
-
-						<tr>     
-							<td>Image 2 produit</td>     
-							<td><input type="file" name="image2"></td>    
+						<tr>
+							<td>Image 1 produit</td>
+							<td><input type="file" name="image"></td>
 						</tr>
 						<br>
 
-						<tr>     
-							<td>Image 3 produit</td>     
-							<td><input type="file" name="image3"></td>    
+						<tr>
+							<td>Image 2 produit</td>
+							<td><input type="file" name="image2"></td>
 						</tr>
 						<br>
 
-						<tr>     
-							<td>Vidéo du produit</td>     
-							<td><input type="file" name="vidéo"></td>   
-						</tr>   
+						<tr>
+							<td>Image 3 produit</td>
+							<td><input type="file" name="image3"></td>
+						</tr>
+						<br>
+
+						<tr>
+							<td>Vidéo du produit</td>
+							<td><input type="file" name="vidéo"></td>
+						</tr>
 
 							<div class="d-flex justify-content-center mt-3 login_container">
 				 	    <input type="submit" class="btn btn-outline-dark" value="Ajouter Cette vente">

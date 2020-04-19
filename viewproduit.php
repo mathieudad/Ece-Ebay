@@ -44,12 +44,17 @@
       </li>
       <li class="nav-item">
         <a class="navbar-brand" href="viewpanier.php">
-          <img src="panier.png" width="50" height="50" class="d-inline-block align-top" alt="">
+          <img src="panier.png" width="40" height="40" class="d-inline-block align-top" alt="">
 
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" style="color:black" href="#">Admin</a>
+        <a class="nav-link" style="color:black" href="viewAdmin.php">Admin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:black" href="index.php">
+           <img src="logout.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        </a>
       </li>
 
 
