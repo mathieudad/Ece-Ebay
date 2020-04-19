@@ -74,13 +74,10 @@ function afficheVente($data){
 	<p class="price-detail-wrap">
 	<dl class="param param-feature">
 	<dt>Prix de départ</dt>
-
 	<span class="price h3 text-warning">
 	<span class="currency">EUR €</span><span class="num">{$data['PrixDepart']}</span>
 	</span>
-
 	<dt>Prix d'achat immédiat</dt>
-
 	<span class="price h3 text-warning">
 	<span class="currency">EUR €</span><span class="num">{$data['PrixAchatImmediat']}</span>
 	</span>
