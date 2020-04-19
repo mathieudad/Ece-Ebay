@@ -26,7 +26,7 @@
           <a class="dropdown-item" href="vip.php">Accesoires VIP</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="tout.php">Voir tous les articles</a>
-          </div>
+        </div>
       </li>
 
     </ul>
@@ -64,46 +64,47 @@
   </section>
 
   <div class="container">
-  <div class="row">
+    <div class="row">
       <div class="col-sm-12 col-md-10 col-md-offset-1">
-          <table class="table table-hover">
-              <thead>
-                  <tr>
-                      <th class=text-left>Objets</th>
-                      <th></th>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class=text-left>Objets</th>
+              <th></th>
 
-                      <th> </th>
-                      <th class="text-center">Prix</th>
-                      <th> </th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <?php include'traitementPanier.php';
-                  panier($_SESSION['Type'],$_SESSION['Id']);
-                    ?>
+              <th> </th>
+              <th class="text-center">Prix</th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php include'traitementPanier.php';
+            panier($_SESSION['Type'],$_SESSION['Id']);
+            ?>
 
 
-                  <tr>
-                      <td>   </td>
-                      <td>   </td>
-                      <td>   </td>
-                      <td class="text-center">
-                    <a href="tout.php">  <button type="button" class="btn btn-outline-dark">
-                           Poursuivre vos achats
-                      </button>  </a> </td>
-                    <td class="text-right">
-                      <button type="button" class="btn btn-outline-dark">
-                          Procéder au paiement <span class="y"></span>
-                      </button></td>
-                  </tr>
-              </tbody>
+            <tr>
+              <td>   </td>
+              <td>   </td>
+              <td>   </td>
+              <td class="text-center">
+                <a href="tout.php">  <button type="button" class="btn btn-outline-dark">
+                 Poursuivre vos achats
+               </button>  </a> </td>
+               <td class="text-right">
+                <a href="paiementPanier.php">
+                <button type="button" class="btn btn-outline-dark">
+                  Procéder au paiement <span class="y"></span>
+                </button> </a></td>
+              </tr>
+            </tbody>
           </table>
+        </div>
       </div>
-  </div>
-</div>
-    </body>
+    </div>
+  </body>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-    </html>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  </html>
