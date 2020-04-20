@@ -1,3 +1,10 @@
+<?php session_start();
+if($_SESSION['Type']=="" || $_SESSION['Id']=="")
+{
+  header('Location: index.php');
+  exit;
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -51,7 +58,7 @@
         <a class="nav-link" style="color:black" href="viewAdmin.php">Admin</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" style="color:black" href="index.php">
+        <a class="nav-link" style="color:black" href="traitementLogout.php">
            <img src="logout.png" width="30" height="30" class="d-inline-block align-top" alt="">
         </a>
       </li>
