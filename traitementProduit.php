@@ -42,7 +42,7 @@ function affichageVenteAdmin($dataVente){
 	<div class="container">
 	<div class="row">
 	<div class="col border-right">
-	<img class="mx-auto  d-block"  src="{$dataVente['Photo']}">
+	<img class="mx-auto  d-block" width="300"  src="{$dataVente['Photo']}">
 	</div>
 	<aside class="col-sm-7 border-right border-top border-bottom">
 	<article class="card-body p-5">
@@ -61,6 +61,11 @@ function affichageVenteAdmin($dataVente){
 	</dl>
 	<hr>
 	<a href="traitementSuppressionVente.php?idvente={$dataVente['IdVente']}" class="btn btn-lg btn-outline-danger text-uppercase"> <i class="fas fa-shopping-cart"></i> Supprimer cet article </a>
+	</article>
+	</aside>
+	</div>
+	</div>
+	</div>
 	FOOBAR;
 }
 
@@ -78,7 +83,7 @@ function affichageVenteVendeur($dataVente){
 	<div class="container">
 	<div class="row">
 	<div class="col border-right">
-	<img class="mx-auto  d-block"  src="{$dataVente['Photo']}">
+	<img class="mx-auto  d-block"  width="300" src="{$dataVente['Photo']}">
 	</div>
 	<aside class="col-sm-7 border-right border-top border-bottom">
 	<article class="card-body p-5">
@@ -117,7 +122,7 @@ function affichageVenteClient($dataVente,$db_handle){
 	<div class="container">
 	<div class="row">
 	<div class="col border-right">
-	<img class="mx-auto  d-block" style="border:solid grey 2px;" width="300" src="{$dataVente['Photo']}">
+	<img class="mx-auto  d-block"  width="300" src="{$dataVente['Photo']}">
 	</div>
 	<aside class="col-sm-7 border-right border-top border-bottom">
 	<article class="card-body p-5">

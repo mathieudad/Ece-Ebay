@@ -85,7 +85,8 @@
     </div>
 
   </body>
-  <footer class="site-footer" style="height:150px">
+  
+  <footer class="site-footer mt-auto" style="height:150px;bottom:0;width:100%">
     <hr>
     
     <div class="container mt-2">
@@ -120,7 +121,8 @@
     <div class="footer-copyright text-center py-2" style="background-color:#f1f1f1">Copyright &copy; 2020 All Rights Reserved by ECEBAY 
     </div>
 
-</footer>
+  </footer>
+
   <!-- Copyright -->
 
 

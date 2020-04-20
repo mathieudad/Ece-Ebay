@@ -11,7 +11,7 @@
   <link href="styles1.css" rel="stylesheet" type="text/css">
   <title>Ebay Ece</title>
 </head>
-<body >
+<body style="  min-height: 100%;">
   <nav class="navbar navbar-expand-lg navbar-light align-items-end"  style="font-size:130%;font-weight:bold">
     <a class="navbar-brand" href="viewAccueil.php"> <img src="logo5.png"  alt=""></a>
     <ul class="navbar-nav mr-auto">
@@ -97,9 +97,10 @@
 
 
   </div>
+</div>
 </body>
 
-<footer class="site-footer mt-auto" style="height:150px">
+<footer class="site-footer mt-auto" style="clear:both;height:150px;bottom:0px;width:100%">
   <hr>
   
   <div class="container mt-2">

@@ -64,6 +64,10 @@ function afficheVenteVendeur($data, $data2){
   <p class="caption">Prix d'achat immediat</p>
   <p class="title">{$data['PrixAchatImmediat']}€</p>
   </div>
+	<div class="min-gap ml-auto"></div>
+	<form action="traitementSuppressionVenteVendeur.php?idvente={$data['IdVente']}" method="post">
+	<input type="submit" class="btn btn-outline-danger text-uppercase" value="Supprimer cette vente">
+	</form>
 </div>
 </div>
 </a>

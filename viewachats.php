@@ -113,7 +113,7 @@
 
   </body>
 
-  <footer class="site-footer mt-auto" style="height:150px">
+  <footer class="site-footer mt-auto" style="clear:both;height:150px;bottom:0px;position:relative;;width:100%">
     <hr>
     
     <div class="container mt-2">
@@ -149,6 +149,7 @@
     </div>
 
   </footer>
+
   <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
   <script id="rendered-js"> </script>
