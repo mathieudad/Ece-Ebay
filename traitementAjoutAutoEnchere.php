@@ -27,6 +27,7 @@ function ajoutAutoEnchere($prixMax, $idVente, $idClient){
 			$fin=nouvelleAutoEnchere($idVente,$idClient,$prixMax,$db_handle);
 		}else{
 			$data = mysqli_fetch_assoc($resultAutoEnchere);
+			if($data['IdClient']!=$idClient)
 			$fin =modifAutoEnchere($idVente,$idClient,$prixMax,$db_handle,$data);
 		}
 	}else {

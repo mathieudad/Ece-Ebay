@@ -23,7 +23,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+        <a class="nav-link dropdown-toggle" href="#"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
           Catégories
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -73,6 +73,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
       <p style="color:white;font-weight:bold"> <br>Retrouvez toutes nos encheres à partir de l'onglet Catégories.<br> Allez consulter vos négociations et votre historique d'achat sur l'onglet Achats & Négociations.<br> <br><br><br><br><br><br><br><br><br>Si vous avez acquis un bien par une enchère ou une négociation, vos articles attendent leur paiement ci-dessous. </p>
     </div>
   </section>
+  
   <div class=container>
     <h4 style="font-weight:bold;color:black">Vos Articles à Payer</h4>
 
@@ -82,14 +83,24 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
         include 'traitementAffichageAPayer.php';
         aPayer($_SESSION['Id'],$_SESSION['Type']);
   ?>
+  
+  <br>
+  <br>
+  <h4 style="font-weight:bold;color:black">Vos Encheres en cours</h4>
+
+  <hr>
+    <?php
+
+      enchereEnCours($_SESSION['Id'],$_SESSION['Type']);
+      ?>
+
 </div>
 <!-- Site footer -->
-<section  >
-  <div class="container">
-    <h1 class="align-items-top" style="font-size:500%;font-weight:bold;color:white">BIENVENUE SUR ECEBAY</h1>
 
-  </div>
-</section>
+
+
+  <!-- Copyright -->
+</body>
 <footer class="site-footer mt-auto" style="clear:both;height:150px;bottom:0px;width:100%">
   <hr>
   
@@ -126,9 +137,6 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
   </div>
 
 </footer>
-
-  <!-- Copyright -->
-  
 
 <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>

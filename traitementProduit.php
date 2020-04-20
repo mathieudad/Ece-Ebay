@@ -180,6 +180,12 @@ function affichageVenteClient($dataVente,$db_handle){
 			<span class="price h3 text-warning">
 			<span class="currency">EUR €</span><span class="num">{$data['PrixActuel']}</span>
 			</span>
+			<dl class="param param-feature">
+			<dt>Date de fin d'enchere</dt>
+			</dl>
+			<span class="price h3 text-danger">
+			<span class="date">{$dataVente['DateFin']}</span>
+			</span>
 			FOOBAR;
 
 		}
@@ -231,6 +237,12 @@ function affichageVenteClient($dataVente,$db_handle){
 		<span class="currency">EUR €</span><span class="num">{$dataVente['PrixDepart']}</span>
 		</span>
 		</p>
+		<dl class="param param-feature">
+		<dt>Date de fin </dt>
+		</dl>
+		<span class="price h3 text-danger">
+		<span class="date">{$dataVente['DateFin']}</span>
+		</span>
 		<hr>
 		<dl class="param param-feature">
 		<dt>Négociation</dt>
