@@ -20,7 +20,6 @@ function suppressionPanier($idClient, $idVente){
 			$sqladd = "UPDATE client SET Panier = NULL WHERE client.IdClient = $idClient";
 			mysqli_query($db_handle, $sqladd);
 		}else{
-			echo $panier;
 			$sqladd = "UPDATE client SET Panier = '$panier' WHERE client.IdClient = $idClient";
 			mysqli_query($db_handle, $sqladd);
 		}
@@ -39,22 +38,21 @@ function suppressionString($string,$idVente){
 		return $string;
 	}
 	else{
-		$test = $idVente.'';
-		if(stripos($string ,$test)==0){
-			$remplace = $idVente.',';
-			$string = str_replace($remplace,'', $string);
-		}else{
-			$remplace = ','.$idVente;
-			$string = str_replace($remplace,'', $string);
-		}
-		return $string;
+		$string = 'o'. $string .'o';
+		$remplace = 'o'.$idVente.',';
+		$string = str_replace($remplace,'', $string);
+		$remplace1 = ','.$idVente.',';
+		$string = str_replace($remplace1,',', $string);
+		$remplace2 = ','.$idVente.'o';
+		$string = str_replace($remplace2,'', $string);
+		$string = str_replace('o', '', $string);
 	}
-
+	return $string;
 }
 
-			session_start();
-			suppressionPanier($_SESSION['Id'],$_GET['idvente']);
-			header('Location:viewpanier.php');
-			exit;
+session_start();
+suppressionPanier($_SESSION['Id'],$_GET['idvente']);
+header('Location:viewpanier.php');
+exit;
 
 ?>
