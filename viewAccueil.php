@@ -76,6 +76,46 @@
         include 'traitementAffichageAPayer.php';
         aPayer($_SESSION['Id'],$_SESSION['Type']);
   ?>
+</div>
+<!-- Site footer -->
+  <footer class="site-footer" style="height:150px">
+    <hr>
+    
+    <div class="container mt-2">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h6><strong>A propos de nous</strong></h6>
+          <p class="text-justify">Ecebay est une intiative pour les amateurs de beaux objets. Notre site recense uniquement des articles de qualité. Notre univers varié de produits permettra au plus avide des collectionneurs comme à un client de simple passage de trouver son bonheur .</p>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6><strong>Navigation</strong></h6>
+          <ul style="color:black">
+            <li><a href="tout.php" style="color:black">Tous les articles</a></li>
+            <li><a href="viewachats.php"style="color:black">Achats et Négociations</a></li>
+            <li><a href="viewventes.php"style="color:black">Vendre un produit</a></li>
+            <li><a href="viewcompte.php"style="color:black">Mon compte</a></li>
+            <li><a href="viewpanier.php"style="color:black">Panier</a></li>
+          </ul>
+        </div>
+
+        <div class=" col-md-3">
+          <h6><strong>Nous contacter</strong></h6>
+          <ul class="footer-links ">
+            <li>Par téléphone au <strong> 01.03.04.89.33 </strong></li>
+            <li>Par email: <a href="mailto:contact@ecebay.com"style="color:black"><strong>contact@ecebay.com</strong></a></li>
+          
+          </ul>
+        </div>
+      </div>
+      
+    </div>
+
+</footer>
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-2" style="background-color:#f1f1f1">Copyright &copy; 2020 All Rights Reserved by ECEBAY 
+  </div>
+
 
 </body>
 
