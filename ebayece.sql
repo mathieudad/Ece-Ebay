@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 18 avr. 2020 à 15:52
+-- Généré le :  lun. 20 avr. 2020 à 16:54
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -75,7 +75,8 @@ CREATE TABLE IF NOT EXISTS `apayer` (
 --
 
 INSERT INTO `apayer` (`IdVente`, `IdClient`, `IdVendeur`, `Nom`, `PrixAchat`, `PrixDepart`, `Photo`, `Video`, `Description`, `TypeAchat`, `Categorie`) VALUES
-(1, 1, 1, 'Montre Bulova', 521, 500, 'PhotoItem/Montre.png', NULL, 'Une super montre jamais portée!', 'Enchere', 'Accessoire VIP');
+(30, 8, 8, 'Vase Grec', 12000, 8000, 'PhotoItem/Vase1.PNG', NULL, 'Ce vase est un vase de collection, a ne pas rater', 'Negociation', 'Bon pour le Musee'),
+(44, 1, 5, 'Omega Speedmaster', 4100, 3600, 'PhotoItem/Omega.PNG', NULL, 'Montre Omega qui est allÃ©e sur la lune, a ne pas rater, annÃ©e 2016, Etat : 8/10.', 'Negociation', 'Accessoire VIP');
 
 -- --------------------------------------------------------
 
@@ -92,6 +93,16 @@ CREATE TABLE IF NOT EXISTS `autoenchere` (
   KEY `c9` (`IdClient`),
   KEY `c10` (`IdVente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `autoenchere`
+--
+
+INSERT INTO `autoenchere` (`IdVente`, `IdClient`, `PrixMax`) VALUES
+(15, 7, 7000),
+(29, 8, 600),
+(32, 1, 1440),
+(39, 6, 400000);
 
 -- --------------------------------------------------------
 
@@ -120,16 +131,21 @@ CREATE TABLE IF NOT EXISTS `client` (
   `CodeCarte` int(4) NOT NULL,
   `PorteMonnaie` int(6) NOT NULL,
   PRIMARY KEY (`IdClient`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `client`
 --
 
 INSERT INTO `client` (`IdClient`, `Nom`, `Prenom`, `E-mail`, `Pseudo`, `MotDePasse`, `Adresse`, `CodePostal`, `Ville`, `Pays`, `Telephone`, `Panier`, `TypeCarte`, `NumCarte`, `NomCarte`, `DateExpCarte`, `CodeCarte`, `PorteMonnaie`) VALUES
-(1, 'Simpson', 'Bart', 'bartsimpson@edu.ece.fr', 'bart', 'bart', '123 route de bart', 13009, 'Springfield', 'USA', '0625032528', NULL, 'Visa', '1234123412341234', 'Bart Simpson', '12/2020', 123, 25832),
-(2, 'Simpson', 'Lisa', 'lisasimpson@edu.ece.fr', 'lisa', 'lisa', '123 route de bart', 13009, 'Springfield', 'USA', '0625032529', NULL, 'Visa', '3456345634563456', 'Lisa Simpson', '08/2020', 141, 250),
-(3, 'Simpson', 'Maggie', 'maggiesimpson@edu.ece.fr', 'mag', 'maggie', '123 route de bart', 13009, 'Springfield', 'USA', '0625032529', '1', 'MasterCard', '1234567812345678', 'Maggie Simpson', '12/2022', 234, 10000);
+(1, 'Simpson', 'Bart', 'bartsimpson@edu.ece.fr', 'bart', 'simpson', '123 route de bart', 13009, 'Springfield', 'USA', '0625032528', NULL, 'Visa', '1234123412341234', 'Bart Simpson', '12/2020', 123, 7793),
+(2, 'Simpson', 'Lisa', 'lisasimpson@edu.ece.fr', 'lisa', 'simpson', '123 route de bart', 13009, 'Springfield', 'USA', '0625032529', NULL, 'Visa', '3456345634563456', 'Lisa Simpson', '08/2020', 141, 250),
+(3, 'Simpson', 'Maggie', 'maggiesimpson@edu.ece.fr', 'maggie', 'simpson', '123 route de bart', 13009, 'Springfield', 'USA', '0625032529', NULL, 'MasterCard', '1234567812345678', 'Maggie Simpson', '12/2022', 234, 10000),
+(4, 'Smith', 'Morty', 'Morty.smith@ece.fr', 'morty', 'smith', '14 rue de l\'espace', 12000, 'Mars', 'Macedoine', '0989896756', '15,22', 'American Express', '1111222233334444', 'Morty Smith', '12/2022', 567, 476300),
+(5, 'Messi', 'Lionel', 'lionel.messi@ece.fr', 'lionel', 'messi', '122 rue du camp nou', 78888, 'Barcelone', 'Espagne', '0855949329', NULL, 'MasterCard', '3333777788884444', 'Lionel Messi', '01/2021', 789, 780000),
+(6, 'Macron', 'Emmanuel', 'parcequecnotreprojet@elysee.fr', 'emmanuel', 'macron', '55 rue du Faubourg-Saint-HonorÃ©', 75008, 'Paris', 'France', '0491229939', '27', 'American Express', '6666777733338888', 'Emmanuel Macron', '09/2023', 735, 500000),
+(7, 'Trump', 'Donald', 'donald.trump@ece.fr', 'donald', 'trump', 'La maison Blanche', 90001, 'Washington', 'Etats_Unis', '0444955396', NULL, 'American Express', '5656454578789898', 'Donald Trump', '07/2023', 678, 800000),
+(8, 'Raoult', 'Didier', 'coronavirus@ece.fr', 'didier', 'raoult', '12 rue du virus', 13008, 'Marseille', 'France', '0899923939', NULL, 'MasterCard', '1222334050402839', 'Didier Raoult', '08/2021', 230, 70000);
 
 -- --------------------------------------------------------
 
@@ -146,6 +162,21 @@ CREATE TABLE IF NOT EXISTS `enchere` (
   KEY `c8` (`IdClient`),
   KEY `c7` (`IdVente`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `enchere`
+--
+
+INSERT INTO `enchere` (`IdVente`, `IdClient`, `PrixActuel`) VALUES
+(14, 6, 17000),
+(15, 7, 6500),
+(24, 5, 56000),
+(25, 3, 450),
+(27, 6, 400000),
+(29, 8, 300),
+(31, 7, 310000),
+(32, 1, 500),
+(39, 6, 300000);
 
 -- --------------------------------------------------------
 
@@ -176,10 +207,9 @@ CREATE TABLE IF NOT EXISTS `historique` (
 --
 
 INSERT INTO `historique` (`IdVente`, `IdClient`, `IdVendeur`, `Nom`, `Photo`, `Video`, `Categorie`, `PrixDepart`, `PrixAchat`, `TypeAchat`, `Description`) VALUES
-(2, 2, 2, 'Bureau en Bois', 'PhotoItem/Bureau.png', NULL, 'Ferraille ou Tresor', 50, 30, 'Negociation', 'hhfgdtfses'),
-(6, 3, 1, 'Statue Bronze', 'PhotoItem/Statue.png', NULL, 'Bon pour le Musee', 1000, 10000, 'Immediat', 'okrobefjze'),
-(7, 2, 1, 'Piece japonaise', 'PhotoItem/Piece2.png', NULL, 'Ferraille ou Tresor', 50, 300, 'Immediat', 'Une belle piece japonaise'),
-(17, 2, 1, 'Jsp', 'PhotoItem/boitie.png', NULL, 'Bon pour le Musee', 50, 140, 'Negociation', 'jiervizejrv');
+(13, 4, 1, 'Montre Pepsi', 'PhotoItem/Pepsi.png', NULL, 'Accessoire VIP', 16000, 17000, 'Negociation', 'Une gmt master 2 pepsi 2015 '),
+(36, 5, 2, 'collier diamant', 'PhotoItem/Bijou2.PNG', NULL, 'Accessoire VIP', 44000, 120000, 'Immediat', 'Je souhaite changer de collier alors je vends celui la serti de diamants '),
+(45, 4, 6, 'Tableau Iron man', 'PhotoItem/Tableau1.PNG', NULL, 'Ferraille ou Tresor', 400, 3300, 'Immediat', 'je vends ce tableau que j ai moi meme peint dans mon garage.');
 
 -- --------------------------------------------------------
 
@@ -198,6 +228,20 @@ CREATE TABLE IF NOT EXISTS `negociation` (
   KEY `c2` (`IdClient`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `negociation`
+--
+
+INSERT INTO `negociation` (`IdVente`, `IdClient`, `NbNego`, `PrixNego`) VALUES
+(16, 3, 0, 16000),
+(16, 4, 0, 15000),
+(16, 7, 1, 16500),
+(22, 7, 0, 440),
+(26, 5, 1, 290000),
+(26, 7, 0, 250000),
+(28, 3, 0, 120),
+(33, 6, 0, 420000);
+
 -- --------------------------------------------------------
 
 --
@@ -213,19 +257,24 @@ CREATE TABLE IF NOT EXISTS `vendeur` (
   `Photo` varchar(535) NOT NULL,
   `ImageFond` varchar(30) NOT NULL,
   `Nom` varchar(30) NOT NULL,
+  `Prenom` varchar(30) NOT NULL,
   `Pays` varchar(30) NOT NULL,
   `Telephone` varchar(10) NOT NULL,
   `PorteMonnaie` int(6) NOT NULL,
   PRIMARY KEY (`IdVendeur`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `vendeur`
 --
 
-INSERT INTO `vendeur` (`IdVendeur`, `E-mail`, `Pseudo`, `MotDePasse`, `Photo`, `ImageFond`, `Nom`, `Pays`, `Telephone`, `PorteMonnaie`) VALUES
-(1, 'homersimpson@edu.ece.fr', 'hom', 'homer', 'PhotoProfil/homer.png', 'PhotoProfil/homer.png', 'Simpson', 'USA', '0625032525', 0),
-(2, 'margesimpson@edu.ece.fr', 'mar', 'marge', 'PhotoProfil/marge.png', 'PhotoProfil/marge.png', 'Simpson', 'USA', '0625032526', 0);
+INSERT INTO `vendeur` (`IdVendeur`, `E-mail`, `Pseudo`, `MotDePasse`, `Photo`, `ImageFond`, `Nom`, `Prenom`, `Pays`, `Telephone`, `PorteMonnaie`) VALUES
+(1, 'homersimpson@edu.ece.fr', 'homer', 'simpson', 'PhotoProfil/homer.png', 'PhotoProfil/homer.png', 'Simpson', 'Homer', 'USA', '0625032525', 0),
+(2, 'margesimpson@edu.ece.fr', 'marge', 'simpson', 'PhotoProfil/marge.png', 'PhotoProfil/marge.png', 'Simpson', 'Marge', 'USA', '0625032526', 0),
+(5, 'james.bond@ece.fr', 'james', 'bond', 'PhotoProfil/James.PNG', 'PhotoProfil/James.PNG', 'Bond', 'James', 'Royaume_Uni', '0607080910', 0),
+(6, 'rickdelespace@ece.fr', 'rick', 'smith', 'PhotoProfil/Rick.PNG', 'PhotoProfil/Rick.PNG', 'Smith', 'Rick', 'Micronesie', '1234567891', 0),
+(7, 'handoftheking@ece.fr', 'tyrion', 'lannister', 'PhotoProfil/Tyrion.PNG', 'PhotoProfil/Tyrion.PNG', 'Lannister', 'Tyrion', 'Macedoine', '0804576819', 0),
+(8, 'onaletoile@om.fr', 'andre', 'villas', 'PhotoProfil/Villas.PNG', 'PhotoProfil/Villas.PNG', 'Villas Boas', 'AndrÃ©', 'Portugal', '0709193494', 0);
 
 -- --------------------------------------------------------
 
@@ -249,38 +298,40 @@ CREATE TABLE IF NOT EXISTS `vente` (
   `DateFin` date NOT NULL,
   PRIMARY KEY (`IdVente`),
   KEY `c1` (`IdVendeur`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `vente`
 --
 
 INSERT INTO `vente` (`IdVente`, `IdVendeur`, `Nom`, `Photo`, `Video`, `Description`, `Categorie`, `PrixDepart`, `PrixAchatImmediat`, `TypeVente`, `DateAjout`, `DateFin`) VALUES
-(9, 2, 'Bijou', 'PhotoItem/Bijou.png', NULL, 'Un bijou des plus rares', 'Accessoire VIP', 1000, 8000, 'Enchere', '2020-04-15', '2020-04-29'),
-(11, 1, 'Rolex Hulk', 'PhotoItem/Hulk.png', NULL, 'Une montre rolex fond vert, tres peu portée', 'Accessoire VIP', 12000, 17000, 'Negociation', '2020-04-15', '2020-05-21'),
 (12, 2, 'Rolex Daytona', 'PhotoItem/Daytona.png', NULL, 'Ancien model de rolex Daytona fond blanc 2002', 'Ferraille ou Tresor', 19000, 26000, 'Enchere', '2020-04-15', '2020-05-07'),
-(13, 1, 'Montre Pepsi', 'PhotoItem/Pepsi.png', NULL, 'Une gmt master 2 pepsi 2015 ', 'Accessoire VIP', 16000, 21000, 'Negociation', '2020-04-15', '2020-04-30'),
 (14, 2, 'Montre Rolex DayJust', 'PhotoItem/Datejust.png', NULL, 'Rolex en or lunette cannelée ', 'Ferraille ou Tresor', 15000, 20000, 'Enchere', '2020-04-14', '2020-04-30'),
 (15, 1, 'Rolex Milgauss', 'PhotoItem/Milgauss.png', NULL, 'Une super belle montre Rolex pas tres chere', 'Ferraille ou Tresor', 6500, 10000, 'Enchere', '2020-04-16', '2020-04-30'),
-(16, 1, 'Montre Rolex Batman', 'PhotoItem/Batman.png', NULL, 'Une montre rolex gmt Master 2 qui ne se produit plus!', 'Bon pour le Musee', 13000, 22000, 'Negociation', '2020-04-15', '2020-05-22');
+(16, 1, 'Montre Rolex Batman', 'PhotoItem/Batman.png', NULL, 'Une montre rolex gmt Master 2 qui ne se produit plus!', 'Bon pour le Musee', 13000, 22000, 'Negociation', '2020-04-15', '2020-05-22'),
+(22, 6, 'Tableau lion', 'PhotoItem/Bijou4.PNG', NULL, 'Je vends ce tableau de lion que jai peins dans mon garage', 'Bon pour le Musee', 300, 500, 'Negociation', '2020-04-20', '2020-05-06'),
+(24, 6, 'Montre Patek Philippe Nautilus', 'PhotoItem/Patek.PNG', NULL, 'Je vends cette montre d\'exception presque jamais portÃ©e annÃ©e 2016', 'Ferraille ou Tresor', 48000, 83000, 'Enchere', '2020-04-20', '2020-05-23'),
+(25, 6, 'Boite Bijou en Verre', 'PhotoItem/Bijou4.PNG', NULL, 'Je vends cette superbe boite en or', 'Ferraille ou Tresor', 400, 1500, 'Enchere', '2020-04-20', '2020-05-21'),
+(26, 5, 'Bague ', 'PhotoItem/Bijou5.PNG', NULL, 'Je vends cette super bague que appartenait a  la reine d Angleterre. ', 'Ferraille ou Tresor', 200000, 900000, 'Negociation', '2020-04-20', '2020-05-21'),
+(27, 5, 'Ferrari 250 GTO', 'PhotoItem/Voiture1.PNG', NULL, 'Je vends ma Ferrari car je ne roule plus avec.', 'Accessoire VIP', 400000, 999999, 'Enchere', '2020-04-20', '2020-06-10'),
+(28, 5, 'La Joconde', 'PhotoItem/Tableau6.PNG', NULL, 'Je vends ce tableau d un peintre peu connu et que je n aime pas particulierement', 'Bon pour le Musee', 80, 700, 'Negociation', '2020-04-20', '2020-05-13'),
+(29, 8, 'Tableau Lion', 'PhotoItem/Tableau2.PNG', NULL, 'Super tableau qui n a plus sa place chez moi, il vous fera rugir de plaisir.', 'Ferraille ou Tresor', 300, 1900, 'Enchere', '2020-04-20', '2020-05-13'),
+(31, 8, 'McLaren 720s', 'PhotoItem/Voiture3.PNG', NULL, 'Je vends ma voiture qui avance tres vite.', 'Accessoire VIP', 300000, 440000, 'Enchere', '2020-04-20', '2020-06-17'),
+(32, 8, 'Lot de deux vase d\'Ã©poque', 'PhotoItem/Vase2.PNG', NULL, 'Ce super lot de vases datant de l\'antiquite!', 'Accessoire VIP', 500, 4500, 'Enchere', '2020-04-20', '2020-05-29'),
+(33, 8, 'Jacob&co Astronomia', 'PhotoItem/Montre1.PNG', NULL, 'Une montre ou l on peut admirer les planetes tourner', 'Bon pour le Musee', 400000, 700000, 'Negociation', '2020-04-20', '2020-07-17'),
+(34, 7, 'bracelets or', 'PhotoItem/Bijou3.PNG', NULL, 'Ces bracelets sont d\'une qualite hors norme, produits dans la meilleure forge du pays', 'Ferraille ou Tresor', 900, 12000, 'Enchere', '2020-04-20', '2020-05-21'),
+(35, 7, 'Statue de bronze', 'PhotoItem/Statue1.PNG', NULL, 'Superbe statue que j\'ai moi meme sculpte.', 'Ferraille ou Tresor', 1200, 5999, 'Enchere', '2020-04-20', '2020-05-05'),
+(37, 2, 'lot de trois bracelets', 'PhotoItem/Bijou1.PNG', NULL, 'Ces bracelets sont super ils vous iront a ravir! ', 'Ferraille ou Tresor', 20, 350, 'Enchere', '2020-04-20', '2020-05-27'),
+(38, 2, 'Statue Africaine', 'PhotoItem/Statue2.PNG', NULL, 'Cette statue en bois d arbre faite par une tribu d\'Afrique.', 'Ferraille ou Tresor', 70, 450, 'Negociation', '2020-04-20', '2020-05-23'),
+(39, 2, 'Nuit Ã©toilÃ©e ', 'PhotoItem/Tableau5.PNG', NULL, 'Tableau original de la nuit etoile peint par Van Gogh lui meme.', 'Bon pour le Musee', 300000, 750000, 'Enchere', '2020-04-20', '2020-06-16'),
+(40, 1, 'Tableau \"fun\" Alpaga', 'PhotoItem/Tableau4.PNG', NULL, 'C\'est un tableau plutot rigolo et original qui ira super bien dans votre salon.', 'Ferraille ou Tresor', 40, 350, 'Enchere', '2020-04-20', '2020-05-20'),
+(41, 1, 'Tableau banc de poisson', 'PhotoItem/Tableau3.PNG', NULL, 'Super tableau ou un banc de poisson se baigne dans l\'ocean.', 'Ferraille ou Tresor', 50, 700, 'Enchere', '2020-04-20', '2020-05-13'),
+(42, 1, 'Voiture multipa', 'PhotoItem/Voiture4.PNG', NULL, 'Connu pour etre LA voiture la plus moche de tous les temps, et je suis d\'accord avec cela.', 'Ferraille ou Tresor', 10, 1000, 'Enchere', '2020-04-20', '2020-05-20'),
+(43, 5, 'Mercedes 300 sl', 'PhotoItem/Voiture2.PNG', NULL, 'Une des voitures les plus belles que Mercedes ait cree.', 'Accessoire VIP', 300000, 700000, 'Enchere', '2020-04-20', '2020-08-18');
 
 --
 -- Contraintes pour les tables déchargées
 --
-
---
--- Contraintes pour la table `apayer`
---
-ALTER TABLE `apayer`
-  ADD CONSTRAINT `c11` FOREIGN KEY (`IdClient`) REFERENCES `client` (`IdClient`),
-  ADD CONSTRAINT `c12` FOREIGN KEY (`IdVendeur`) REFERENCES `vendeur` (`IdVendeur`);
-
---
--- Contraintes pour la table `autoenchere`
---
-ALTER TABLE `autoenchere`
-  ADD CONSTRAINT `c10` FOREIGN KEY (`IdVente`) REFERENCES `vente` (`IdVente`),
-  ADD CONSTRAINT `c9` FOREIGN KEY (`IdClient`) REFERENCES `client` (`IdClient`);
 
 --
 -- Contraintes pour la table `enchere`
