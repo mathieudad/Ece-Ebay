@@ -60,7 +60,7 @@
     </ul>
   </nav>
 
-  <section class="jumbotron text-center" style="background-image:url(musee.jpg);" >
+  <section class="jumbotron text-center" style="background-image:url(orsay.jpg);" >
     <div class="container">
       <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">BON POUR MUSEE</h1>
 
