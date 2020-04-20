@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 20 avr. 2020 à 16:54
+-- Généré le :  lun. 20 avr. 2020 à 17:06
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -236,7 +236,6 @@ INSERT INTO `negociation` (`IdVente`, `IdClient`, `NbNego`, `PrixNego`) VALUES
 (16, 3, 0, 16000),
 (16, 4, 0, 15000),
 (16, 7, 1, 16500),
-(22, 7, 0, 440),
 (26, 5, 1, 290000),
 (26, 7, 0, 250000),
 (28, 3, 0, 120),
@@ -309,7 +308,6 @@ INSERT INTO `vente` (`IdVente`, `IdVendeur`, `Nom`, `Photo`, `Video`, `Descripti
 (14, 2, 'Montre Rolex DayJust', 'PhotoItem/Datejust.png', NULL, 'Rolex en or lunette cannelée ', 'Ferraille ou Tresor', 15000, 20000, 'Enchere', '2020-04-14', '2020-04-30'),
 (15, 1, 'Rolex Milgauss', 'PhotoItem/Milgauss.png', NULL, 'Une super belle montre Rolex pas tres chere', 'Ferraille ou Tresor', 6500, 10000, 'Enchere', '2020-04-16', '2020-04-30'),
 (16, 1, 'Montre Rolex Batman', 'PhotoItem/Batman.png', NULL, 'Une montre rolex gmt Master 2 qui ne se produit plus!', 'Bon pour le Musee', 13000, 22000, 'Negociation', '2020-04-15', '2020-05-22'),
-(22, 6, 'Tableau lion', 'PhotoItem/Bijou4.PNG', NULL, 'Je vends ce tableau de lion que jai peins dans mon garage', 'Bon pour le Musee', 300, 500, 'Negociation', '2020-04-20', '2020-05-06'),
 (24, 6, 'Montre Patek Philippe Nautilus', 'PhotoItem/Patek.PNG', NULL, 'Je vends cette montre d\'exception presque jamais portÃ©e annÃ©e 2016', 'Ferraille ou Tresor', 48000, 83000, 'Enchere', '2020-04-20', '2020-05-23'),
 (25, 6, 'Boite Bijou en Verre', 'PhotoItem/Bijou4.PNG', NULL, 'Je vends cette superbe boite en or', 'Ferraille ou Tresor', 400, 1500, 'Enchere', '2020-04-20', '2020-05-21'),
 (26, 5, 'Bague ', 'PhotoItem/Bijou5.PNG', NULL, 'Je vends cette super bague que appartenait a  la reine d Angleterre. ', 'Ferraille ou Tresor', 200000, 900000, 'Negociation', '2020-04-20', '2020-05-21'),
