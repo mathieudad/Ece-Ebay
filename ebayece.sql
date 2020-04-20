@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 20 avr. 2020 à 17:06
+-- Généré le :  lun. 20 avr. 2020 à 18:32
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `apayer` (
   `Categorie` enum('Bon pour le Musee','Accessoire VIP','Ferraille ou Tresor') NOT NULL,
   PRIMARY KEY (`IdVente`,`IdClient`,`IdVendeur`) USING BTREE,
   KEY `c11` (`IdClient`),
-  KEY `c12` (`IdVendeur`)
+  KEY `cvendapayer` (`IdVendeur`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -330,6 +330,20 @@ INSERT INTO `vente` (`IdVente`, `IdVendeur`, `Nom`, `Photo`, `Video`, `Descripti
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `apayer`
+--
+ALTER TABLE `apayer`
+  ADD CONSTRAINT `c1apayer` FOREIGN KEY (`IdVendeur`) REFERENCES `vendeur` (`IdVendeur`),
+  ADD CONSTRAINT `c2apayer` FOREIGN KEY (`IdClient`) REFERENCES `client` (`IdClient`);
+
+--
+-- Contraintes pour la table `autoenchere`
+--
+ALTER TABLE `autoenchere`
+  ADD CONSTRAINT `c1aa` FOREIGN KEY (`IdClient`) REFERENCES `client` (`IdClient`),
+  ADD CONSTRAINT `c2aa` FOREIGN KEY (`IdVente`) REFERENCES `vente` (`IdVente`);
 
 --
 -- Contraintes pour la table `enchere`
