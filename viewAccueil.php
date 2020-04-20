@@ -61,7 +61,7 @@
     </ul>
   </nav>
 
-  <section class="jumbotron text-center" style="height:500px;background-image:url(musee.jpg);" >
+  <section class="jumbotron text-center" style="height:520px;background-image:url(musee.jpg);" >
     <div class="container">
       <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">BIENVENUE SUR ECEBAY</h1>
 
@@ -78,6 +78,12 @@
   ?>
 </div>
 <!-- Site footer -->
+<section  >
+  <div class="container">
+    <h1 class="align-items-top" style="font-size:500%;font-weight:bold;color:white">BIENVENUE SUR ECEBAY</h1>
+
+  </div>
+</section>
   <footer class="site-footer" style="height:150px">
     <hr>
     
@@ -110,14 +116,14 @@
       </div>
       
     </div>
+    <div class="footer-copyright text-center py-2" style="background-color:#f1f1f1">Copyright &copy; 2020 All Rights Reserved by ECEBAY 
+    </div>
 
+
+    </body>
 </footer>
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-2" style="background-color:#f1f1f1">Copyright &copy; 2020 All Rights Reserved by ECEBAY 
-  </div>
-
-
-</body>
+  
 
 <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>

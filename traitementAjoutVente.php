@@ -33,7 +33,8 @@ function ajoutVente($idVendeur,$nom,$description,$categorie,$prixDepart,$prixAch
 	$db_handle = mysqli_connect('localhost','root','');
 	$db_found = mysqli_select_db($db_handle, $database);
 	$dateToday = date('Y-m-d');
-	$sqlVente = "INSERT INTO `vente`(`IdVente`,`IdVendeur`, `Nom`, `Photo`, `Video`, `Description`, `Categorie`, `PrixDepart`, `PrixAchatImmediat`, `TypeVente`, `DateAjout`, `DateFin`) VALUES (NULL,'$idVendeur','$nom','$photo',NULL,'$description','$categorie','$prixDepart','$prixAchatImmediat','$typeVente','$dateToday','$datefin')";
+	$sqlVente = "INSERT INTO `vente`(`IdVente`,`IdVendeur`, `Nom`, `Photo`, `Video`, `Description`, `Categorie`, `PrixDepart`, `PrixAchatImmediat`, `TypeVente`, `DateAjout`, `DateFin`)
+	 VALUES (NULL,'$idVendeur','$nom','$photo',NULL,'$description','$categorie','$prixDepart','$prixAchatImmediat','$typeVente','$dateToday','$datefin')";
 	$res = mysqli_query($db_handle, $sqlVente);
 
 	mysqli_close($db_handle);
