@@ -40,16 +40,11 @@ function affichageVenteAdmin($dataVente){
 	//teste data type de vente et affiche en fonction sachant que c un admin
 	echo <<< FOOBAR
 	<div class="container">
-	<div class="card">
 	<div class="row">
-	<aside class="col-sm-5 border-right">
-	<article class="gallery-wrap">
-	<div class="img-big-wrap">
-	<div style="object-fit:cover"> <a href="#"><img src="{$dataVente['Photo']}" ></a></div>
+	<div class="col border-right">
+	<img class="mx-auto  d-block"  src="{$dataVente['Photo']}">
 	</div>
-	</article>
-	</aside>
-	<aside class="col-sm-7">
+	<aside class="col-sm-7 border-right border-top border-bottom">
 	<article class="card-body p-5">
 	<h3 class="title mb-3">{$dataVente['Nom']}</h3>
 	<dl class="item-property">

@@ -52,7 +52,7 @@ function affichageAPayer($dataAPayer){
 		<p class="caption">Prix à payer </p>
 		<p class="title">{$dataAPayer['PrixAchat']}€</p>
 		</div>
-		<div class="min-gap"></div>
+		<div class="min-gap ml-auto"></div>
 		<form action="paiementAPayer.php?idvente={$dataAPayer['IdVente']}" method="post">
 		<input type="submit" class="btn btn-outline-success text-uppercase" value="Procéder au paiement">
 		</form>

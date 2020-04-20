@@ -31,7 +31,7 @@ if ($db_found) {
     $_SESSION['Type'] = $type;
     $_SESSION['Id'] =(int)$data['IdClient'];
     finEnchere();
-    header('Location:tout.php');
+    header('Location:viewAccueil.php');
     exit();
     }
     else {
@@ -63,7 +63,7 @@ if ($db_found) {
     $_SESSION['Type'] = $type;
     $_SESSION['Id'] = (int)$data['IdVendeur'];
     finEnchere();
-    header('Location:tout.php');
+    header('Location:viewAccueil.php');
     exit();
     }
     else {
@@ -94,7 +94,7 @@ if ($db_found) {
     $_SESSION['Type'] = $type;
     $_SESSION['Id'] = (int)$data['IdAdmin'];
     finEnchere();
-    header('Location:tout.php');
+    header('Location:viewAccueil.php');
     exit();
     }
     else {
