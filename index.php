@@ -12,7 +12,7 @@
 
 
 
-<body style=" background-image: url(musee.jpg);background-repeat: no-repeat;background-position: center;background-color: black;" >
+<body style=" background-image: url(fondIndex.png);background-repeat: no-repeat;background-size: cover;background-color: black;width:100%;height:100%" >
 
 
 	<div class="container align-content-center ">
@@ -20,13 +20,16 @@
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
 					<div class="brand_logo_container mt-5">
-						<img src="logo5.png" class="brand_logo" alt="Logo">
+						<img src="logoNegatif.png" class="brand_logo" alt="Logo">
 					</div>
+					
 				</div>
+				
 				<br>
 				<br>
-
-				<div class="card justify-content-center p-3" style="background-color:rgba(255,255,255,0.9)">
+				
+				<p class="d flex title justify-content-center text-center font-weight-bold" style="color:white;text-align:justify;"> Bienvenue sur Ecebay, votre salle d'enchère en ligne.<br> Les plus beaux articles de prestige vous attendent. <br>Connectez-vous ou créez votre compte.<br> </p>
+				<div class="card justify-content-center p-3" style="color:white;background-color:black" >
 
 
 
@@ -65,7 +68,7 @@
 							</div>
 
 							<div class="d-flex justify-content-center mt-3 login_container">
-								<input type="submit" class="btn btn-outline-dark" style="text-transform:uppercase" value="Se connecter">
+								<input type="submit" class="btn btn-outline-light" style="text-transform:uppercase" value="Se connecter">
 							</div>
 						</form>
 
@@ -74,11 +77,12 @@
 						<div class="d-flex justify-content-center links">
 							Vous n'avez pas de compte? <a href="viewInscription.php" class="ml-2" style="color:grey">Créer un compte</a>
 						</div>
-</div>
+					</div>
 
 					</div>
 				</div>
 			</div>
 		</div>
 	</body>
+	
 	</html>
